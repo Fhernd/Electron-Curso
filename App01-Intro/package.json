@@ -1,0 +1,29 @@
+{
+  "name": "app01-intro",
+  "version": "1.0.0",
+  "description": "Aplicación de escritorio multiplataforma en Electron.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fhernd/Electron-Curso.git"
+  },
+  "keywords": [
+    "Electron",
+    "Escritorio",
+    "Multiplataforma",
+    "Node.js",
+    "Chromium"
+  ],
+  "author": "John Ortiz Ordoñez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fhernd/Electron-Curso/issues"
+  },
+  "homepage": "https://github.com/Fhernd/Electron-Curso#readme",
+  "devDependencies": {
+    "electron": "^8.1.1"
+  }
+}
