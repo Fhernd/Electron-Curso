@@ -7,9 +7,9 @@ function establecerVersion(idSelector, version){
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    const componentes = ['Node', 'Chromium', 'Electron']
+    const componentes = ['Node', 'Chrome', 'Electron']
 
     for(const componente of componentes){
-        establecerVersion(`version${componente}`, process.versions[componente]);
+        establecerVersion(`version${componente}`, process.versions[componente.toLowerCase()]);
     }
 });
