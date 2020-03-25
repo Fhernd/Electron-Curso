@@ -32,6 +32,7 @@ class Marcadores{
         .then(titulo => this.almacenarMarcador(url, titulo))
         .then(this.limpiarFormulario)
         .then(this.visualizarMarcadores)
+        .catch(error => this.reportarError(error, url));
     }
 
     extraerContenido(contenido){
@@ -50,7 +51,7 @@ class Marcadores{
         this.marcadorUrl.value = null;
     }
 
-    obtenerEnlaces() {
+    obtenerMarcadores() {
         return Object.keys(localStorage).map(k => JSON.parse(localStorage.getItem(k)));
     }
 
@@ -60,8 +61,14 @@ class Marcadores{
     }
 
     visualizarMarcadores() {
-        let enlaces = this.obtenerEnlaces();
+        let marcadores = this.obtenerMarcadores();
 
-        let html = null;
+        let html = marcadores.map(this.generarHtmlMarcador()).join('');
+
+        this.mensajeError.innerHTML = html;
+    }
+
+    reportarError(error, url) {
+        
     }
 }
