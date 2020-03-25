@@ -14,7 +14,7 @@
 <body>
     <h1>Marcadores</h1>
 
-    <div class="alert alert-warning mensaje-error" role="alert"></div>
+    <div class="alert alert-warning mensaje-error invisible" role="alert"></div>
 
     <section class="creacion-marcador">
         <form class="creacion-marcador-formulario form-inline">
@@ -29,9 +29,13 @@
 
     <section class="marcadores"></section>
 
-    <section id="controles">
-        <button class="btn btn-danger remover-marcadores">Eliminar Marcadores</button>
-    </section>
+    <br>
+
+    <div style="margin-top: 10px;">
+        <section id="controles">
+            <button class="btn btn-danger remover-marcadores">Eliminar Marcadores</button>
+        </section>
+    </div>
 
     <script src="./renderer.js"></script>
 </body>
