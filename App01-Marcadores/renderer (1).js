@@ -8,7 +8,6 @@ class Marcadores{
         this.eliminarMarcadores = document.querySelector('.remover-marcadores');
 
         this.parser = new DOMParser();
-
         this.agregarEventListeners();
     }
 
@@ -17,16 +16,16 @@ class Marcadores{
             this.marcadorBoton.disabled = !this.marcadorUrl.validity.valid;
         });
 
-        this.formularioCreacionMarcadores.addEventListener('submit', this.crearMarcador.bind(this))
+        this.formularioCreacionMarcadores.addEventListener('submit', this.crearMarcador.bind(this));
     }
 
     crearMarcador(evento) {
         evento.preventDefault();
 
-        const url = this.marcadorUrl.nodeValue;
+        const url = this.marcadorUrl.value;
 
         fetch(url)
-        .then(respuesta => respuesta.text())
+        .then(respuesta => {console.log(respuesta); return respuesta.text()})
         .then(this.extraerContenido)
         .then(this.encontrarTituloPagina)
         .then(titulo => this.almacenarMarcador(url, titulo))
@@ -36,6 +35,7 @@ class Marcadores{
     }
 
     extraerContenido(contenido){
+        console.log(contenido);
         return this.parser.parseFromString(contenido, 'text/html');
     }
 
