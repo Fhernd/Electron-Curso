@@ -17,6 +17,21 @@ class Marcadores{
             this.marcadorBoton.disabled = !this.marcadorUrl.validity.valid;
         });
 
+        this.marcadorBoton.addEventListener('submit', this.crearMarcador.bind(this))
+    }
+
+    crearMarcador(evento) {
+        evento.preventDefault();
+
+        const url = this.marcadorUrl.nodeValue;
+
+        fetch(url)
+        .then(respuesta => respuesta.text())
+        .then(this.extraerContenido)
         
+    }
+
+    extraerContenido(contenido){
+        return this.parser.parseFromString(contenido, 'text/html');
     }
 }
