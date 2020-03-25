@@ -69,6 +69,12 @@ class Marcadores{
     }
 
     reportarError(error, url) {
-        
+        this.mensajeError.innerHTML = `Ocurrió un error al intentar acceder a ${url}: ${error}`;
+
+        setTimeout(() => {
+            this.mensajeError.innerText = null;
+        });
     }
 }
+
+new Marcadores();
