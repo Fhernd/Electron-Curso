@@ -92,7 +92,7 @@ class Marcadores{
     abrirEnlaceMarcador(evento) {
         if(evento.target.href){
             evento.preventDefault();
-            shell.openExternal(evento.target.href);
+            shell.shell.openExternal(evento.target.href);
         }
     }
 }
