@@ -86,4 +86,5 @@ class Marcadores{
     }
 }
 
-new Marcadores();
+let marcadores = new Marcadores();
+marcadores.visualizarMarcadores();
