@@ -1,3 +1,5 @@
+const shell = require('electron');
+
 class Marcadores{
     constructor() {
         this.mensajeError = document.querySelector('.mensaje-error');
@@ -20,6 +22,8 @@ class Marcadores{
         this.formularioCreacionMarcadores.addEventListener('submit', this.crearMarcador.bind(this));
 
         this.eliminarMarcadores.addEventListener('click', this.eliminarMarcadoresCreados.bind(this));
+
+        this.marcadores.addEventListener('click', this.abrirEnlaceMarcador.bind(this));
     }
 
     crearMarcador(evento) {
@@ -83,6 +87,13 @@ class Marcadores{
         localStorage.clear();
 
         this.marcadores.innerHTML = '';
+    }
+
+    abrirEnlaceMarcador(evento) {
+        if(evento.target.href){
+            evento.preventDefault();
+            shell.openExternal(evento.target.href);
+        }
     }
 }
 
