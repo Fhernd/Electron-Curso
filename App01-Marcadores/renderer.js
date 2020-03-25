@@ -64,7 +64,7 @@ class Marcadores{
     visualizarMarcadores() {
         let marcadores = this.obtenerMarcadores();
 
-        let html = marcadores.map(this.generarHtmlMarcador()).join('');
+        let html = marcadores.map(this.generarHtmlMarcador).join('');
 
         this.mensajeError.innerHTML = html;
     }
