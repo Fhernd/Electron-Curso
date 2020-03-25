@@ -8,6 +8,7 @@
     <meta http-equiv="X-Content-Security-Policy" content="default-src *; script-src 'self'">
     <title>Marcadores</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 
 <body>
@@ -16,16 +17,20 @@
     <div class="alert alert-warning mensaje-error" role="alert"></div>
 
     <section class="creacion-marcador">
-        <form class="creacion-marcador-formulario">
-            <input type="url" class="creacion-marcador-url" placeholder="URL" required>
-            <input type="submit" value="Crear" class="creacion-marcador-boton" disabled>
+        <form class="creacion-marcador-formulario form-inline">
+            <div class="form-group">
+                <input type="url" class="form-control creacion-marcador-url" placeholder="URL" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-success creacion-marcador-boton" disabled>
+            </div>
         </form>
     </section>
 
     <section class="marcadores"></section>
 
     <section id="controles">
-        <button class="remover-marcadores">Eliminar Marcadores</button>
+        <button class="btn btn-danger remover-marcadores">Eliminar Marcadores</button>
     </section>
 
     <script src="./renderer.js"></script>
