@@ -23,19 +23,20 @@ class Marcadores{
     crearMarcador(evento) {
         evento.preventDefault();
 
-        const url = this.marcadorUrl.nodeValue;
+        const url = this.marcadorUrl.value;
 
         fetch(url)
         .then(respuesta => respuesta.text())
-        .then(this.extraerContenido)
+        .then(this.extraerContenido.bind(this))
         .then(this.encontrarTituloPagina)
         .then(titulo => this.almacenarMarcador(url, titulo))
-        .then(this.limpiarFormulario)
-        .then(this.visualizarMarcadores)
+        .then(this.limpiarFormulario.bind(this))
+        .then(this.visualizarMarcadores.bind(this))
         .catch(error => this.reportarError(error, url));
     }
 
     extraerContenido(contenido){
+        console.log(contenido);
         return this.parser.parseFromString(contenido, 'text/html');
     }
 
