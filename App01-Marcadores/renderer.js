@@ -63,8 +63,7 @@ class Marcadores{
     }
 
     generarHtmlMarcador(marcador){
-        return `<div class="enlace"><h3>${marcador.titulo}</h3>
-        <p><a href="${marcador.url}">${marcador.url}</a></p></div>`;
+        return `<li>${marcador.titulo}<a href="${marcador.url}">${marcador.url}</a></li>`;
     }
 
     visualizarMarcadores() {
