@@ -31,7 +31,7 @@ class Marcadores{
         .then(this.encontrarTituloPagina)
         .then(titulo => this.almacenarMarcador(url, titulo))
         .then(this.limpiarFormulario)
-        
+        .then(this.visualizarMarcadores)
     }
 
     extraerContenido(contenido){
@@ -48,5 +48,20 @@ class Marcadores{
 
     limpiarFormulario() {
         this.marcadorUrl.value = null;
+    }
+
+    obtenerEnlaces() {
+        return Object.keys(localStorage).map(k => JSON.parse(localStorage.getItem(k)));
+    }
+
+    generarHtmlMarcador(marcador){
+        return `<div class="enlace"><h3>${marcador.titulo}</h3>
+        <p><a href="${marcador.url}">${marcador.url}</a></p></div>`;
+    }
+
+    visualizarMarcadores() {
+        let enlaces = this.obtenerEnlaces();
+
+        let html = null;
     }
 }
