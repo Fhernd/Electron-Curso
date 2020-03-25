@@ -28,10 +28,25 @@ class Marcadores{
         fetch(url)
         .then(respuesta => respuesta.text())
         .then(this.extraerContenido)
+        .then(this.encontrarTituloPagina)
+        .then(titulo => this.almacenarMarcador(url, titulo))
+        .then(this.limpiarFormulario)
         
     }
 
     extraerContenido(contenido){
         return this.parser.parseFromString(contenido, 'text/html');
+    }
+
+    encontrarTituloPagina(html){
+        return html.querySelector('title').innerText;
+    }
+
+    almacenarMarcador(url, titulo) {
+        localStorage.setItem(url, JSON.stringify({titulo: titulo, url: url}));
+    }
+
+    limpiarFormulario() {
+        this.marcadorUrl.value = null;
     }
 }
