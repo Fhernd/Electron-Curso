@@ -15,31 +15,38 @@
 
     <div class="container">
         <div class="row">
-            <form class="border border-light p-5">
+            <div class="col">
+                <form class="border border-light p-5">
 
-                <p class="h4 mb-4 text-center">Sign in</p>
+                    <p class="h3 mb-4 text-left">Nuevo registro</p>
 
-                <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+                    <input type="text" id="nombres" class="form-control mb-4" placeholder="Nombres" required>
 
-                <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+                    <input type="text" id="apellidos" class="form-control mb-4" placeholder="Apellidos" required>
 
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-                            <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
-                        </div>
-                    </div>
-                    <div>
-                        <a href="">Forgot password?</a>
-                    </div>
-                </div>
+                    <input type="email" id="correo" class="form-control mb-4" placeholder="E-mail" required>
 
-                <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
-            </form>
+                    <button class="btn btn-info btn-block my-4" type="submit">Crear</button>
+                </form>
+            </div>
         </div>
         <div class="row">
-
+            <div class="col">
+                <p class="h3 mb-4 text-center">Registros</p>
+                <table id="tablePreview" class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Correo-e</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="js/jquery.min.js"></script>
