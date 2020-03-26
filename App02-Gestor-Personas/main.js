@@ -2,6 +2,20 @@ const {app, BrowserWindow, Menu} = require('electron');
 
 let ventanaPrincipal;
 
+let menuAplicacionPlantilla = [
+    {
+        label: 'Aplicación',
+        submenu: [
+            {
+                label: 'Acerca de',
+                click: () => {
+                    abrirVentanaAcercaDe();
+                }
+            }
+        ]
+    }
+];
+
 function crearVentanaPrincipal(){
     ventanaPrincipal = new BrowserWindow({
         width: 800,
@@ -12,6 +26,13 @@ function crearVentanaPrincipal(){
     });
 
     ventanaPrincipal.loadFile('index.html');
+
+    let menu = Menu.buildFromTemplate(menuAplicacionPlantilla);
+    ventanaPrincipal.setMenu(menu);
+}
+
+function abrirVentanaAcercaDe() {
+    
 }
 
 app.whenReady().then(crearVentanaPrincipal);
