@@ -29,10 +29,14 @@ function crearVentanaPrincipal(){
 
     let menu = Menu.buildFromTemplate(menuAplicacionPlantilla);
     ventanaPrincipal.setMenu(menu);
+
+    ventanaPrincipal.on('closed', () => {
+        ventanaPrincipal = null;
+    });
 }
 
 function abrirVentanaAcercaDe() {
-    
+
 }
 
 app.whenReady().then(crearVentanaPrincipal);
