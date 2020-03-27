@@ -1,4 +1,4 @@
-const baseDatos = require('./base-datos');
+const baseDatos = require('./js/base-datos');
 
 class GestorPersonas {
     constructor() {
@@ -27,6 +27,7 @@ class GestorPersonas {
     }
 
     crearRegistroPersona(evento) {
+        console.log(evento);
         evento.preventDefault();
 
         baseDatos.agregarPersona(this.nombres.value, this.apellidos.value, this.correo.value);

@@ -23,7 +23,7 @@ exports.obtenerPersonas = function(operacion) {
 };
 
 exports.eliminarPersona = function(id) {
-    bd.remove({_id = id},  {}, function(error, numeroRegistrosEliminados){
+    bd.remove({_id: id},  {}, function(error, numeroRegistrosEliminados){
 
     });
 };
