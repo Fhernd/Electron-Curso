@@ -36,7 +36,19 @@ function crearVentanaPrincipal(){
 }
 
 function abrirVentanaAcercaDe() {
+    let ventanaAcercaDe = new BrowserWindow({
+        parent: ventanaPrincipal,
+        modal: true,
+        show: false,
+        width: 400,
+        height: 250
+    });
 
+    ventanaAcercaDe.loadFile('acerca-de.html');
+    ventanaAcercaDe.setMenu(null);
+    ventanaAcercaDe.once('ready-to-show', () => {
+        ventanaAcercaDe.show();
+    });
 }
 
 app.whenReady().then(crearVentanaPrincipal);
