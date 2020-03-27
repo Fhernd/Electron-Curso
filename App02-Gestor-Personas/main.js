@@ -52,3 +52,15 @@ function abrirVentanaAcercaDe() {
 }
 
 app.whenReady().then(crearVentanaPrincipal);
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin'){
+        app.quit();
+    }
+});
+
+app.on('activate', () => {
+    if (ventanaPrincipal === null){
+        crearVentanaPrincipal();
+    }
+});

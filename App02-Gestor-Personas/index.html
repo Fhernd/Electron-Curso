@@ -5,10 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <title>Material Design Bootstrap</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/mdb.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -16,7 +18,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <form id="frmNuevoRegistro" class="border border-light p-5">
+                <form id="frmNuevoRegistro" class="border border-light p-4">
 
                     <p class="h3 mb-4 text-left">Nuevo registro</p>
 
@@ -30,7 +32,7 @@
                 </form>
             </div>
         </div>
-        <div class="row" style="margin-top: 30px;">
+        <div class="row espacio-vertical">
             <div class="col">
                 <p class="h3 mb-4 text-center">Registros</p>
                 <table class="table">
