@@ -15,15 +15,6 @@ class GestorPersonas {
 
     agregarEventListeners() {
         this.frmNuevoRegistro.addEventListener('submit', this.crearRegistroPersona.bind(this));
-        this.nombres.addEventListener('keyup', this.habilitarBotonCrearRegistro.bind(this));
-        this.apellidos.addEventListener('keyup', this.habilitarBotonCrearRegistro.bind(this));
-        this.correo.addEventListener('keyup', this.habilitarBotonCrearRegistro.bind(this));
-    }
-
-    habilitarBotonCrearRegistro() {
-        if (this.nombres.value && this.apellidos.value && this.correo.validity.valid){
-            this.btnCrearRegistro.disabled = false;
-        }
     }
 
     crearRegistroPersona(evento) {
@@ -44,7 +35,7 @@ class GestorPersonas {
             <td>${persona.nombres}</td>
             <td>${persona.apellidos}</td>
             <td>${persona.correo}</td>
-            <td><input type="button" class="btn btn-danger" onclick="${this.eliminarRegistroPersona(persona._id)}"></td>
+            <td><input type="button" class="btn btn-danger btn-sm" onclick="gestorPersonas.eliminarRegistroPersona('${persona._id}');" value="Eliminar"></td>
         </tr>`;
     }
 
@@ -63,4 +54,4 @@ class GestorPersonas {
     }
 }
 
-new GestorPersonas();
+let gestorPersonas = new GestorPersonas();
