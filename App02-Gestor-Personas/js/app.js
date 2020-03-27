@@ -18,7 +18,6 @@ class GestorPersonas {
     }
 
     crearRegistroPersona(evento) {
-        console.log(evento);
         evento.preventDefault();
 
         baseDatos.agregarPersona(this.nombres.value, this.apellidos.value, this.correo.value);
