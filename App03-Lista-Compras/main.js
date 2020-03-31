@@ -36,7 +36,10 @@ function crearVentanaAgregarProducto(){
         modal: true,
         width: 300,
         height: 200,
-        title: 'Agregar producto'
+        title: 'Agregar producto',
+        webPreferences: {
+            nodeIntegration: true
+        }
     });
 
     ventanaNuevoProducto.loadFile('agregar-producto.html');
@@ -62,3 +65,7 @@ function crearVentanaPrincipal(){
 }
 
 app.whenReady().then(crearVentanaPrincipal);
+
+ipcMain.on('producto:agregar', function(evento, nombreProducto){
+    ventanaPrincipal.webContents.send('producto:agregar', nombreProducto);
+});

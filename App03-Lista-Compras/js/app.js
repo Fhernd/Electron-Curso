@@ -1,4 +1,4 @@
-const {ipcRenderer} = require('electron');
+const {ipcRenderer, remote} = require('electron');
 
 ipcRenderer.on('producto:agregar', function(evento, nombreProducto){
     localStorage.setItem(nombreProducto, nombreProducto);
@@ -11,3 +11,10 @@ function cargarListaProducto(){
 
     document.getElementById('listaCompras').innerHTML = html;
 }
+
+
+document.addEventListener('keydown', (e) => {
+    if (e.which === 123){
+        remote.getCurrentWindow().webContents.openDevTools();
+    }
+})
