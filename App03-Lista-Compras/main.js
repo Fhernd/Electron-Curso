@@ -71,3 +71,15 @@ app.whenReady().then(crearVentanaPrincipal);
 ipcMain.on('producto:agregar', function(evento, nombreProducto){
     ventanaPrincipal.webContents.send('producto:agregar', nombreProducto);
 });
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin'){
+        app.quit();
+    }
+});
+
+app.on('activate', () => {
+    if (ventanaPrincipal === null){
+        crearVentanaPrincipal();
+    }
+});
