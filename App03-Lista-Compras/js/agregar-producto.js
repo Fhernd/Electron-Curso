@@ -3,11 +3,12 @@ const {ipcRenderer} = require('electron');
 function agregarProducto(evento){
     evento.preventDefault();
 
-    let nombreProducto = document.querySelector('nombreProducto').value;
-    console.log('Nombre producto:', nombreProducto);
+    let nombreProducto = document.querySelector('#nombreProducto').value;
+    
     if (nombreProducto){
+        document.querySelector('#nombreProducto').value = '';
         ipcRenderer.send('producto:agregar', nombreProducto);
     }
 }
-console.log('agregar-producto.js')
+
 document.querySelector('#frmAgregarProducto').addEventListener('submit', agregarProducto);

@@ -3,10 +3,16 @@ const {ipcRenderer, remote} = require('electron');
 ipcRenderer.on('producto:agregar', function(evento, nombreProducto){
     localStorage.setItem(nombreProducto, nombreProducto);
     
-    cargarListaProducto();
+    cargarListaCompras();
 });
 
-function cargarListaProducto(){
+ipcRenderer.on('productos:eliminar', () => {
+    localStorage.clear();
+
+    cargarListaCompras();
+});
+
+function cargarListaCompras(){
     let html = Object.keys(localStorage).map(k => `<div class="list-group-item">${localStorage.getItem(k)}</div>`).join('');
 
     document.getElementById('listaCompras').innerHTML = html;
@@ -17,4 +23,6 @@ document.addEventListener('keydown', (e) => {
     if (e.which === 123){
         remote.getCurrentWindow().webContents.openDevTools();
     }
-})
+});
+
+cargarListaCompras();
