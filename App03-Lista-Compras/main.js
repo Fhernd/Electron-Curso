@@ -31,7 +31,19 @@ let menuPrincipalPlantilla = [
 ];
 
 function crearVentanaAgregarProducto(){
+    ventanaNuevoProducto = new BrowserWindow({
+        parent: ventanaPrincipal,
+        modal: true,
+        width: 300,
+        height: 200,
+        title: 'Agregar producto'
+    });
 
+    ventanaNuevoProducto.loadFile('agregar-producto.html');
+
+    ventanaNuevoProducto.on('close', function() {
+        ventanaNuevoProducto = null;
+    });
 }
 
 function crearVentanaPrincipal(){
