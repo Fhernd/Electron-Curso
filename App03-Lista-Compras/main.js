@@ -44,6 +44,8 @@ function crearVentanaAgregarProducto(){
 
     ventanaNuevoProducto.loadFile('agregar-producto.html');
 
+    ventanaNuevoProducto.setMenu(null);
+
     ventanaNuevoProducto.on('close', function() {
         ventanaNuevoProducto = null;
     });

@@ -18,11 +18,20 @@ function cargarListaCompras(){
     document.getElementById('listaCompras').innerHTML = html;
 }
 
+function eliminarProducto(evento){
+    let nombreProducto = evento.target.innerText;
+
+    localStorage.removeItem(nombreProducto);
+
+    cargarListaCompras();
+}
 
 document.addEventListener('keydown', (e) => {
     if (e.which === 123){
         remote.getCurrentWindow().webContents.openDevTools();
     }
 });
+
+document.querySelector('#listaCompras').addEventListener('dblclick', eliminarProducto);
 
 cargarListaCompras();
