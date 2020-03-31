@@ -1,0 +1,29 @@
+{
+  "name": "app03-lista-compras",
+  "version": "1.0.0",
+  "description": "Aplicación de escritorio multiplataforma en Electron.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fhernd/Electron-Curso.git"
+  },
+  "keywords": [
+    "electron",
+    "escritorio",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "John Ortiz Ordoñez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fhernd/Electron-Curso/issues"
+  },
+  "homepage": "https://github.com/Fhernd/Electron-Curso#readme",
+  "dependencies": {
+    "electron": "^8.2.0"
+  }
+}
