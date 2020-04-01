@@ -46,7 +46,7 @@ function procesarDatos(evento) {
     partesGrabacion.push(evento.data);
 }
 
-function detenerGrabacion(evento) {
+async function detenerGrabacion(evento) {
     const blob = new Blob(partesGrabacion, {type: 'video/webm; codecs=vp9'});
 
     const buffer = Buffer.from(await blob.arrayBuffer());
@@ -72,3 +72,13 @@ let grabar = document.querySelector('#grabar');
 let detener = document.querySelector('#detener');
 
 seleccionarFuenteVideo.onclick = obtenerSeleccionarFuentesVideo;
+
+grabar.addEventListener('click', () => {
+    grabadorMultimedia.start();
+    grabar.disabled = true;
+});
+
+detener.addEventListener('click', () => {
+    grabadorMultimedia.onstop();
+    grabar.disabled = false;
+});
