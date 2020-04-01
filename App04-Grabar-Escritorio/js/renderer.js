@@ -43,11 +43,24 @@ async function seleccionarFuente(fuenteEntrada) {
 }
 
 function procesarDatos(evento) {
-
+    partesGrabacion.push(evento.data);
 }
 
 function detenerGrabacion(evento) {
-    
+    const blob = new Blob(partesGrabacion, {type: 'video/webm; codecs=vp9'});
+
+    const buffer = Buffer.from(await blob.arrayBuffer());
+
+    const {filePath} = await dialog.showSaveDialog({
+       buttonLabel: 'Guardar vídeo' ,
+       defaultPath: `vídeo-${Date.now()}.webm`
+    });
+
+    if (filePath) { 
+        writeFile(filePath, buffer, () => {
+            alert('Se ha guardado el archivo.');
+        });
+    }
 }
 
 let grabadorMultimedia;
