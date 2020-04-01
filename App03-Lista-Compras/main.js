@@ -63,7 +63,8 @@ function crearVentanaPrincipal(){
     ventanaPrincipal.loadFile('index.html');
 
     let menuPrincipal = Menu.buildFromTemplate(menuPrincipalPlantilla);
-    ventanaPrincipal.setMenu(menuPrincipal);
+    Menu.setApplicationMenu(menuPrincipal);
+    //ventanaPrincipal.setMenu(menuPrincipal);
 }
 
 app.whenReady().then(crearVentanaPrincipal);

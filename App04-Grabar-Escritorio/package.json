@@ -1,0 +1,28 @@
+{
+  "name": "app04-grabar-escritorio",
+  "version": "1.0.0",
+  "description": "Aplicación de escritorio multiplataforma para grabar el escritorio.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fhernd/Electron-Curso.git"
+  },
+  "keywords": [
+    "electron",
+    "pantalla",
+    "escritorio",
+    "multiplataforma"
+  ],
+  "author": "John Ortiz Ordoñez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fhernd/Electron-Curso/issues"
+  },
+  "homepage": "https://github.com/Fhernd/Electron-Curso#readme",
+  "dependencies": {
+    "electron": "^8.2.0"
+  }
+}
