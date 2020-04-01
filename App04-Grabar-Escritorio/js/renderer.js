@@ -14,6 +14,39 @@ async function obtenerSeleccionarFuentesVideo() {
         } )
     );
 
+    menuFuentesEntrada.popup();
+}
+
+async function seleccionarFuente(fuenteEntrada) {
+    seleccionarFuenteVideo.innerText = fuenteEntrada.name;
+
+    const opcionesCaptura = {
+        audio: false,
+        video: {
+            mandatory: {
+                chromeMediaSource: 'desktop',
+                chromeMediaSourceId: fuenteEntrada.id
+            }
+        }
+    };
+
+    const streamCaptura = await navigator.mediaDevices.getUserMedia(opcionesCaptura);
+
+    visualizacionCaptura.srcObject = streamCaptura;
+    visualizacionCaptura.play();
+
+    const opcionesFormato = {mimeType: 'video/webm; codecs=vp9'};
+    grabadorMultimedia = new MediaRecorder(streamCaptura, opcionesFormato);
+
+    grabadorMultimedia.ondataavailable = procesarDatos;
+    grabadorMultimedia.onstop = detenerGrabacion;
+}
+
+function procesarDatos(evento) {
+
+}
+
+function detenerGrabacion(evento) {
     
 }
 
