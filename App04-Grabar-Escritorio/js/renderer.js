@@ -76,11 +76,16 @@ seleccionarFuenteVideo.onclick = obtenerSeleccionarFuentesVideo;
 
 grabar.addEventListener('click', () => {
     grabadorMultimedia.start();
+    grabar.innerText = 'Grabando'
     grabar.disabled = true;
     detener.disabled = false;
+    seleccionarFuenteVideo.disabled = true;
 });
 
 detener.addEventListener('click', () => {
-    grabadorMultimedia.onstop();
+    grabadorMultimedia.stop();
     grabar.disabled = false;
+    grabar.innerText = 'Grabar';
+    detener.disabled = true;
+    seleccionarFuenteVideo.disabled = false;
 });
