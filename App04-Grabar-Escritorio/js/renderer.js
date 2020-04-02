@@ -18,6 +18,7 @@ async function obtenerSeleccionarFuentesVideo() {
 }
 
 async function seleccionarFuente(fuenteEntrada) {
+    grabar.disabled = false;
     seleccionarFuenteVideo.innerText = fuenteEntrada.name;
 
     const opcionesCaptura = {
@@ -76,6 +77,7 @@ seleccionarFuenteVideo.onclick = obtenerSeleccionarFuentesVideo;
 grabar.addEventListener('click', () => {
     grabadorMultimedia.start();
     grabar.disabled = true;
+    detener.disabled = false;
 });
 
 detener.addEventListener('click', () => {
