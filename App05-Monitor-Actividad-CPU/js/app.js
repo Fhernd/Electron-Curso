@@ -44,6 +44,22 @@ class MonitorActividadCpu {
         return datos;
     }
 
+    actualizarConjuntoDatos() {
+        const cpus = os.cpus();
+
+        for (let i = 0; i < cpus.length; i++) {
+            const cpu = cpus[i];
+
+            this.grafico.data.datasets[i].data = this.obtenerTiemposCpu(cpu);
+            this.grafico.data.datasets[i].data[0] -= this.medidasRecientesCpu[i][0];
+            this.grafico.data.datasets[i].data[1] -= this.medidasRecientesCpu[i][1];
+            this.grafico.data.datasets[i].data[2] -= this.medidasRecientesCpu[i][2];
+        }
+
+        this.grafico.update();
+        this.obtenerMedidasRecientesCpu(cpus);
+    }
+
     generarVisualizacion() {
         this.grafico = new Chart($('#monitorCpuCanvas'), {
             type: 'doughnut',
@@ -58,8 +74,17 @@ class MonitorActividadCpu {
                     text: 'Actividad de CPU',
                     fontColor: 'rgb(250, 250, 250)',
                     fontSize: 19
+                },
+                legend: {
+                    display: true,
+                    labels: {
+                        fontColor: 'rgb(250, 250, 250)',
+                        fontSize: 12
+                    }
                 }
             }
-        })
+        });
+
+        setInterval(this.actualizarConjuntoDatos, 1000);
     }
 }
