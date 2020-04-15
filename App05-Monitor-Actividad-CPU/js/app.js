@@ -1,19 +1,34 @@
 const os = require('os');
 
+/**
+ * Representa la clase principal para monitorizar la actividad de CPU.
+ */
 class MonitorActividadCpu {
+    /**
+     * Función constructura e inicializadora de los elementos esenciales para crear una instancia de esta clase.
+     */
     constructor() {
         this.grafico = null;
         this.medidasRecientesCpu = [];
 
-
+        this.obtenerMedidasRecientesCpu(os.cpus());
+        this.generarVisualizacion();
     }
 
+    /**
+     * Obtiene las medidas recientes de cada CPU adyancentes al sistema.
+     * @param {*} cpus Conjunto de CPUs.
+     */
     obtenerMedidasRecientesCpu(cpus) {
         for (let i = 0; i < cpus.length; i++) {
             this.medidasRecientesCpu[i] = this.obtenerTiemposCpu(cpus[i]);
         }
     }
 
+    /**
+     * Obtiene el tiempo (usuario, sistema, libre) de una CPU.
+     * @param {*} cpu CPU sobre la que se consulta el tiempo.
+     */
     obtenerTiemposCpu(cpu) {
         return [
             cpu.times.user,
@@ -22,6 +37,9 @@ class MonitorActividadCpu {
         ];
     }
 
+    /**
+     * Lee los datos de cada CPU para ser visualizados en una gráfica.
+     */
     obtenerConjuntoDatos() {
         let datos = [];
         const cpus = os.cpus();
@@ -44,6 +62,9 @@ class MonitorActividadCpu {
         return datos;
     }
 
+    /**
+     * Actualiza de forma recurrente los datos que se visualizan en la gráfica.
+     */
     actualizarConjuntoDatos() {
         const cpus = os.cpus();
 
@@ -60,6 +81,10 @@ class MonitorActividadCpu {
         this.obtenerMedidasRecientesCpu(cpus);
     }
 
+    /**
+     * Genera visualización en un objeto tipo Chart. Configura la visualización acorde a los 
+     * datos de las CPUs.
+     */
     generarVisualizacion() {
         this.grafico = new Chart($('#monitorCpuCanvas'), {
             type: 'doughnut',
@@ -88,3 +113,7 @@ class MonitorActividadCpu {
         setInterval(this.actualizarConjuntoDatos, 1000);
     }
 }
+
+$(() => {
+    new MonitorActividadCpu();
+});
