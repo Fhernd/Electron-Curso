@@ -1,0 +1,32 @@
+{
+  "name": "app06-generador-hashes",
+  "version": "1.0.0",
+  "description": "Aplicación de escritorio multiplataforma para la generación de hashes (MD5, SHA-1, SHA-256, y SHA-512).",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fhernd/Electron-Curso.git"
+  },
+  "keywords": [
+    "electron",
+    "javascript",
+    "html",
+    "css",
+    "hash",
+    "multiplataforma",
+    "escritorio",
+    "aplicación"
+  ],
+  "author": "John Ortiz Ordoñez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fhernd/Electron-Curso/issues"
+  },
+  "homepage": "https://github.com/Fhernd/Electron-Curso#readme",
+  "dependencies": {
+    "electron": "^8.2.2"
+  }
+}
