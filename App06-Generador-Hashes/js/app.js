@@ -10,8 +10,12 @@ $(document).ready(() => {
         $('#md5').text(md5);
 
         const sha1 = crypto.createHash('sha1').update(texto, 'utf8').digest('hex');
-        $('#md5').text(sha1);
+        $('#sha1').text(sha1);
 
-        
+        const sha256 = crypto.createHash('sha256').update(texto, 'utf8').digest('hex');
+        $('#sha256').text(sha256);
+
+        const sha512 = crypto.createHash('sha512').update(texto, 'utf8').digest('hex');
+        $('#sha512').text(sha512);
     });
 });
