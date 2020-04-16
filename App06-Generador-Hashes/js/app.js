@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const {clipboard} = require('electron');
 
 $(document).ready(() => {
     $('#texto').focus();
@@ -17,5 +18,13 @@ $(document).ready(() => {
 
         const sha512 = crypto.createHash('sha512').update(texto, 'utf8').digest('hex');
         $('#sha512').text(sha512);
+    });
+
+    $('#md5, #sha1, #sha256, #sha512').click(function() {
+        let hash = this.innerText;
+
+        console.log(hash);
+
+        clipboard.writeText(hash);
     });
 });
