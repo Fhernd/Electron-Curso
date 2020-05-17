@@ -1,0 +1,22 @@
+.petroleo, .petroleo small {
+    background-color: black;
+    color: #E5E5E5;
+}
+
+.oro, .oro small {
+    background-color: gold;
+    color: #403600;
+}
+
+.plata, .plata small {
+    background-color: silver;
+    color: #404040;
+}
+
+.row {
+    height: 33.333333333%;
+}
+
+html, body, .container-fluid {
+    height: 100%;
+}
