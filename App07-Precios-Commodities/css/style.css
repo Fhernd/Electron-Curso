@@ -20,3 +20,33 @@
 html, body, .container-fluid {
     height: 100%;
 }
+
+.row > div {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.precio {
+    padding-right: 7px;
+}
+
+.precio::before {
+    content: '$';
+}
+
+.cambio {
+    padding-left: 3px;
+}
+
+.cambio::before {
+    content: '(';
+}
+
+.cambio::after {
+    content: ')';
+}
+
+.precio:empty, .cambio:empty {
+    display: none;
+}
