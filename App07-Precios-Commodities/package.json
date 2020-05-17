@@ -4,7 +4,7 @@
   "description": "Aplicación de escritorio para obtener los precios de 3 commodities.",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
