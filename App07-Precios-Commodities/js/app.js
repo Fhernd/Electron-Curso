@@ -4,9 +4,9 @@ function cargarPreciosCommodities() {
     let url;
 
     const commodities = {
-        petroleo: 'CL.F',
-        oro: 'GC.F',
-        silver: 'SI.F'
+        Petroleo: 'CL.F',
+        Oro: 'GC.F',
+        Plata: 'SI.F'
     };
 
     for (const commodity in commodities) {
@@ -21,6 +21,13 @@ function cargarPreciosCommodities() {
                 const precioActual = parseFloat(registro[6]);
 
                 let cambio = Math.round((precioActual - precioAnterior) * 100) / 100;
+
+                if (cambio >= 0) {
+                    cambio = `+${cambio}`;
+                }
+
+                $(`precio${commodity}`).text(precioActual);
+                $(`cambio${commodity}`).text(cambio);
             }
         })
     }
