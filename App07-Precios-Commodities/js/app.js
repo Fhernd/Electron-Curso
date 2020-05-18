@@ -10,12 +10,13 @@ function cargarPreciosCommodities() {
     };
 
     for (const commodity in commodities) {
-        url = `https://stooq.com/q/?s=${commodities[commodity]}&f=sd2t2ohlc&h&e=csv`;
+        url = `https://stooq.com/q/l/?s=${commodities[commodity]}&f=sd2t2ohlc&h&e=csv`;
 
         csv.parse(url, {
             download: true,
             delimiter: ',',
             complete: (results) => {
+                console.log(results);
                 const registro = results.data[1];
                 const precioAnterior = parseFloat(registro[3])
                 const precioActual = parseFloat(registro[6]);
@@ -26,8 +27,8 @@ function cargarPreciosCommodities() {
                     cambio = `+${cambio}`;
                 }
 
-                $(`precio${commodity}`).text(precioActual);
-                $(`cambio${commodity}`).text(cambio);
+                $(`#precio${commodity}`).text(precioActual);
+                $(`#cambio${commodity}`).text(cambio);
             }
         })
     }

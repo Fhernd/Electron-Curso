@@ -4,10 +4,11 @@ const url = require('url');
 
 let ventanaPrincipal = null;
 
-app.once('ready', () => {
+function crearVentanaPrincipal() {
     ventanaPrincipal = new BrowserWindow({
         width: 600,
         height: 500,
+        resizable: false,
         show: false,
         webPreferences: {
             nodeIntegration: true
@@ -23,4 +24,20 @@ app.once('ready', () => {
     ventanaPrincipal.once('ready-to-show', () => {
         ventanaPrincipal.show();
     });
+
+    ventanaPrincipal.setMenu(null);
+}
+
+app.once('ready', crearVentanaPrincipal);
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
+
+app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length == 0) {
+        crearVentanaPrincipal();
+    }
 });
