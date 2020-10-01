@@ -1,0 +1,14 @@
+html {
+    border-style: solid;
+    border-color: khaki;
+    border-width: 7px;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: azure;
+    width: 100%;
+}
