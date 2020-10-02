@@ -24,4 +24,21 @@ async function iniciarAplicacion() {
 
     ventanaPrincipal.setMenuBarVisibility(false);
     ventanaPrincipal.loadFile('index.html');
+
+    const atajoTecladoVentana = new BrowserWindow({
+        width: 400,
+        height: 650,
+        frame: false,
+        resizable: false,
+        minimizable: false,
+        maximizable: false,
+        show: false,
+        title: 'Atajo teclado',
+        webPreferences: {
+            nodeIntegration: true
+        }
+    });
+
+    atajoTecladoVentana.setMenuBarVisibility(false);
+    atajoTecladoVentana.loadFile('atajoTeclado.html');
 }
