@@ -41,4 +41,36 @@ async function iniciarAplicacion() {
 
     atajoTecladoVentana.setMenuBarVisibility(false);
     atajoTecladoVentana.loadFile('atajoTeclado.html');
+
+    atajoTecladoVentana.on('close', (evento) => {
+        if (!app.isQuiting) {
+            evento.preventDefault();
+            atajoTecladoVentana.hide();
+        }
+
+        return false;
+    });
+
+    ventanaPrincipal.on('minimize', (evento) => {
+        evento.preventDefault();
+        ventanaPrincipal.hide();
+    });
+
+    ventanaPrincipal.on('close', (evento) => {
+        if (!app.isQuiting) {
+            evento.preventDefault();
+            ventanaPrincipal.hide();
+        }
+    });
+
+    const iconos = {
+        darwin: 'images/16x16.png',
+        linux: 'images/64x64',
+        win32: 'images/64x64'
+    }
+
+    let areaBandeja = new Tray(path.join(__dirname, iconos[process.platform]));
+    areaBandeja.setToolTip('Mostrar el historial del portapapeles');
+
+    // TODO: plantilla opciones ícono bandeja de entrada (área de notificaciones).
 }
