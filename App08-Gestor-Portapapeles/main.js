@@ -72,5 +72,35 @@ async function iniciarAplicacion() {
     let areaBandeja = new Tray(path.join(__dirname, iconos[process.platform]));
     areaBandeja.setToolTip('Mostrar el historial del portapapeles');
 
-    // TODO: plantilla opciones ícono bandeja de entrada (área de notificaciones).
+    const plantillaOperaciones = [
+        {
+            label: 'Mostrar historial',
+            click: () => ventanaPrincipal.show()
+        },
+        {
+            label: 'Cambiar atajo de teclado',
+            click: () => atajoTecladoVentana.show(),
+        },
+        {
+            type: 'separator'
+        },
+        {
+            label: 'Salir',
+            click: () => app.exit()
+        }
+    ];
+
+    let menuContextual = Menu.buildFromTemplate(plantillaOperaciones);
+    areaBandeja.setContextMenu(menuContextual);
+
+    let atajoTecladoGlobal = await settings.get('globalShortcut');
+    if (!atajoTecladoGlobal) {
+        await settings.set('globalShortcut', 'CmdOrCtrl+Alt+Shift+Up');
+        atajoTecladoGlobal = 'CmdOrCtrl+Alt+Shift+Up';
+    }
+
+    globalShortcut.register(atajoTecladoGlobal, () => {
+        areaBandeja.focus();
+        ventanaPrincipal.show();
+    });
 }
