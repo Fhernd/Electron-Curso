@@ -104,3 +104,29 @@ async function iniciarAplicacion() {
         ventanaPrincipal.show();
     });
 }
+
+function alternarTeclado() {
+    let seleccionContenido = clipboard.readText('selection');
+
+    clipboard.writeText('JavaScript', 'selection');
+
+    seleccionContenido = clipboard.readText('selection');
+}
+
+app.whenReady().then(iniciarAplicacion);
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
+
+app.on('active', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+        iniciarAplicacion();
+    }
+});
+
+ipcMain.on('finalizar-aplicacion', () {
+    app.exit();
+});
