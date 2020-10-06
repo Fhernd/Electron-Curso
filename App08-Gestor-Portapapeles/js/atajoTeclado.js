@@ -1,10 +1,10 @@
-const {clipboard, remote, globalshortcut, ipcRenderer} = require('electron');
+const {remote, globalshortcut, ipcRenderer} = require('electron');
 const jquery = require('jquery');
 const settings = require('electron-settings');
 
 let atajoTeclado = document.querySelector('input');
 let btnReestablecer = document.querySelector("button[type='reset']");
-let btnEnviar = document.querySelector("button[type='submit']");
+let btnGuardarAtajoTeclado = document.querySelector("button[type='submit']");
 
 remote.getCurrentWindow().on('show', async function() {
     atajoTeclado.focus();
@@ -31,4 +31,18 @@ document.body.addEventListener('keyup', function(evento) {
 
         return true;
     }
+});
+
+jquery(btnReestablecer).on('click', function() {
+    atajoTeclado.value = '';
+    teclasAtajoTeclado = [];
+    atajoTeclado.focus();
+});
+
+jquery(btnGuardarAtajoTeclado).on('click', async function() {
+    await settings.set('atajoTecladoGlobal', atajoTeclado.value);
+
+    atajoTeclado.focus();
+    remote.getCurrentWindow().close();
+    ipcRenderer.send('finalizar-aplicacion');
 });
