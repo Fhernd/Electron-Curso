@@ -2,7 +2,7 @@ const {clipboard, remote} = require('electron');
 const jquery = require('jquery');
 const dexie = require('dexie');
 dexie.debug = true;
-const historialPortapapeles = new dexie('historial');
+const bd = new dexie('historial');
 
 let dato = jquery('#dato');
 let tablaPortapapeles = jquery('#tablaPortapapeles');
@@ -24,7 +24,7 @@ jquery('body').on('keydown', function(evento) {
         let siguienteDato = filas[indice + 1] || filas[0];
         siguienteDato.focus();
     } else if (evento.key === 'Enter') {
-        cambiarDatoSeleccionado();
+        cambiarDatoSeleccionado(evento);
     } else if (evento.key === 'Escape') {
         dato.value = '';
         refrescarVista();
@@ -35,8 +35,18 @@ jquery('body').on('keydown', function(evento) {
     }
 });
 
-function cambiarDatoSeleccionado() {
-    // TODO...
+async function cambiarDatoSeleccionado(evento) {
+    if (evento.target.id) {
+        if (clipboard.readText() === (await bd.historial.get(parseInt(evento.target.id))).text) {
+            return;
+        }
+
+        if(evento.target.tagName === 'TD') {
+            clipboard.writeText((await bd.historial.get(parseInt(evento.target.id))).text);
+        }
+
+        refrescarVista();
+    }
 }
 
 function refrescarVista() {
