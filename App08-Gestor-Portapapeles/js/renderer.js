@@ -50,5 +50,25 @@ async function cambiarDatoSeleccionado(evento) {
 }
 
 function refrescarVista() {
-    // TODO...
+    bd.historial.count((e) => {
+        dato.value = `Buscar entre ${e} elementos...`;
+    });
+
+    return bd.historial.limit(50).desc()
+        .filter((h) => {
+            return !dato.value || h.text.toLowerCase().indexOf(dato.value.toLowerCase()) !== -1;
+        })
+        .toArray()
+        .then((h) => {
+            jquery(tablaPortapapeles).remove();
+
+            let indice = 0;
+
+            h.forEach((e) => {
+                let tr = jquery('<tr>');
+                ++indice;
+                tr.append(`<tr><td tabindex="${indice}" id="${e.id}"></td> <td><button id="${e.id}">&#10006;</button></td></tr>`);
+                tablaPortapapeles.append(tr);
+            });
+        });
 }
