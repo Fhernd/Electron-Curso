@@ -72,3 +72,19 @@ function refrescarVista() {
             });
         });
 }
+
+setTimeout(async () => {
+    await bd.version(1).stores({historial: '++id,texto'});
+
+    refrescarVista();
+
+    let texto = clipboard.readText();
+
+    setInterval(async () => {
+        if (texto !== clipboard.readText()) {
+            texto = clipboard.readText();
+
+            bd.historial.add({texto: texto}).then(refrescarVista);
+        }
+    }, 200);
+})
