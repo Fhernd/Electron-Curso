@@ -4,15 +4,18 @@ const dexie = require('dexie');
 dexie.debug = true;
 const bd = new dexie('historial');
 
-let dato = jquery('#dato');
-let tablaPortapapeles = jquery('#tablaPortapapeles');
-tablaPortapapeles.on('click', cambiarDatoSeleccionado);
+// let dato = jquery('#dato');
+let dato = document.querySelector('input');
+// let tablaPortapapeles = jquery('#tablaPortapapeles');
+let tablaPortapapeles = document.querySelector('table');
+// tablaPortapapeles.on('click', cambiarDatoSeleccionado);
+tablaPortapapeles.addEventListener('click', cambiarDatoSeleccionado);
 
 remote.getCurrentWindow().on('show', () => {
     dato.focus();
 });
 
-jquery('body').on('keydown', function(evento) {
+document.body.addEventListener('keydown', function(evento) {
     let filas = Array.from(document.querySelectorAll('tr td:first-child'));
 
     let indice = filas.indexOf(document.activeElement);

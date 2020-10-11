@@ -105,14 +105,6 @@ async function iniciarAplicacion() {
     });
 }
 
-function alternarTeclado() {
-    let seleccionContenido = clipboard.readText('selection');
-
-    clipboard.writeText('JavaScript', 'selection');
-
-    seleccionContenido = clipboard.readText('selection');
-}
-
 app.whenReady().then(iniciarAplicacion);
 
 app.on('window-all-closed', () => {
