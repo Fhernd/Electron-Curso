@@ -65,8 +65,8 @@ async function iniciarAplicacion() {
 
     const iconos = {
         darwin: 'images/16x16.png',
-        linux: 'images/64x64',
-        win32: 'images/64x64'
+        linux: 'images/64x64.png',
+        win32: 'images/64x64.png'
     }
 
     let areaBandeja = new Tray(path.join(__dirname, iconos[process.platform]));
