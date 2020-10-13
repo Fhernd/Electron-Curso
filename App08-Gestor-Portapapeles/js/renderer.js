@@ -63,15 +63,19 @@ function refrescarVista() {
         })
         .toArray()
         .then((h) => {
-            jquery(tablaPortapapeles).remove();
+            tablaPortapapeles.innerHTML = '';
 
             let indice = 0;
 
             h.forEach((e) => {
-                let tr = jquery('<tr>');
+                let registro = document.createElement('tr')
                 ++indice;
-                tr.append(`<tr><td tabindex="${indice}" id="${e.id}"></td> <td><button id="${e.id}">&#10006;</button></td></tr>`);
-                tablaPortapapeles.append(tr);
+                
+                registro.innerHTML = `<tr><td tabindex="${indice}" id="${e.id}"> </td><td><button id="${e.id}">&#10006;</button></td></tr>`;
+
+                registro.querySelector('td').innerText = e.textoi.replace(/\n/g, ' ');
+
+                tablaPortapapeles.appendChild(registro);
             });
         });
 }
