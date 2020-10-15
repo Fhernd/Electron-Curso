@@ -1,4 +1,4 @@
-const {app, BrowserWindow, clipboard, globalShortcut, ipcMain, Menu, Tray} = require('electron');
+const {app, BrowserWindow, globalShortcut, ipcMain, Menu, Tray} = require('electron');
 const path = require('path');
 const settings = require('electron-settings');
 
@@ -18,11 +18,12 @@ async function iniciarAplicacion() {
         title: 'Clips de portapeles',
         webPreferences: {
             preload: path.join(__dirname, 'js', 'preload.js'),
-            nodeIntegration: true
+            nodeIntegration: true,
+            enableRemoteModule: true
         }
     });
 
-    ventanaPrincipal.setMenuBarVisibility(false);
+    ventanaPrincipal.setMenuBarVisibility(true);
     ventanaPrincipal.loadFile('index.html');
 
     const atajoTecladoVentana = new BrowserWindow({
