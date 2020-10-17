@@ -40,13 +40,15 @@ document.body.addEventListener('keydown', function(evento) {
 
 async function cambiarDatoSeleccionado(evento) {
     if (evento.target.id) {
-        if (clipboard.readText() === (await bd.historial.get(parseInt(evento.target.id))).text) {
+        if (clipboard.readText() === (await bd.historial.get(parseInt(evento.target.id))).texto) {
             return;
         }
 
         if(evento.target.tagName === 'TD') {
-            clipboard.writeText((await bd.historial.get(parseInt(evento.target.id))).text);
+            clipboard.writeText((await bd.historial.get(parseInt(evento.target.id))).texto);
         }
+
+        await bd.historial.delete(parseInt(evento.target.id));
 
         refrescarVista();
     }
@@ -54,12 +56,12 @@ async function cambiarDatoSeleccionado(evento) {
 
 function refrescarVista() {
     bd.historial.count((e) => {
-        dato.value = `Buscar entre ${e} elementos...`;
+        dato.placeholder = `Buscar entre ${e} elementos...`;
     });
 
     return bd.historial.limit(50).desc()
         .filter((h) => {
-            return !dato.value || h.text.toLowerCase().indexOf(dato.value.toLowerCase()) !== -1;
+            return !dato.value || h.texto.toLowerCase().indexOf(dato.value.toLowerCase()) !== -1;
         })
         .toArray()
         .then((h) => {
@@ -73,7 +75,7 @@ function refrescarVista() {
                 
                 registro.innerHTML = `<tr><td tabindex="${indice}" id="${e.id}"> </td><td><button id="${e.id}">&#10006;</button></td></tr>`;
 
-                registro.querySelector('td').innerText = e.textoi.replace(/\n/g, ' ');
+                registro.querySelector('td').innerText = e.texto.replace(/\n/g, ' ');
 
                 tablaPortapapeles.appendChild(registro);
             });
@@ -90,7 +92,7 @@ setTimeout(async () => {
     setInterval(async () => {
         if (texto !== clipboard.readText()) {
             texto = clipboard.readText();
-
+            
             bd.historial.add({texto: texto}).then(refrescarVista);
         }
     }, 200);
