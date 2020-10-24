@@ -1,0 +1,37 @@
+{
+  "name": "app09-calculadora",
+  "version": "1.0.0",
+  "description": "calculadora multiplataforma (Linux, macOS, Windows)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fhernd/Electron-Curso.git"
+  },
+  "keywords": [
+    "calculadora",
+    "multiplataforma",
+    "windows",
+    "linux",
+    "macos",
+    "web",
+    "electron",
+    "desktop",
+    "escritorio",
+    "sistema",
+    "operativo"
+  ],
+  "author": "John Ortiz Ordoñez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fhernd/Electron-Curso/issues"
+  },
+  "homepage": "https://github.com/Fhernd/Electron-Curso#readme",
+  "devDependencies": {
+    "electron": "^10.1.4",
+    "electron-builder": "^22.9.1"
+  }
+}

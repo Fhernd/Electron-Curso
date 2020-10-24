@@ -65,7 +65,7 @@ async function iniciarAplicacion() {
     });
 
     const iconos = {
-        darwin: 'images/16x16.png',
+        darwin: 'images/icon.png',
         linux: 'images/64x64.png',
         win32: 'images/64x64.png'
     }
