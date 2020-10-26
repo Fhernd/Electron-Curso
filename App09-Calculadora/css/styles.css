@@ -1,0 +1,28 @@
+*,
+*::after
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.contenedor {
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.superior {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.80);
+    user-select: none;
+    -webkit-app-region: drag;
+}
+
+.titulo {
+    margin: 0 auto;
+    font-size: 0.8rem;
+    color: white;
+    cursor: move;
+}
