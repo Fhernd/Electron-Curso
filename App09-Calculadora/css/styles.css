@@ -26,3 +26,31 @@
     color: white;
     cursor: move;
 }
+
+.punto {
+    cursor: pointer;
+    border-radius: 45%;
+    margin: 12px;
+    height: 0.7rem;
+    width: 0.7rem;
+    background-color: darkred;
+    -webkit-app-region: no-drag;
+}
+
+.copiar, .cierre {
+    color: transparent;
+    font-size: 17px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.5s;
+}
+
+.cierre {
+    transform: rotate(45deg);
+}
+
+.cierre:hover, copiar:hover {
+    color: white;
+}
