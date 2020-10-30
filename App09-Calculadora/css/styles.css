@@ -123,3 +123,23 @@ body {
     flex: 1;
     padding: 15px;
 }
+
+.igual, .suma {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.igual {
+    background-color: #FF5722;
+    color: white;
+    border: 1px solid #FF5722;
+    transition: background-color 0.25s, box-shadow 0.25s;
+}
+
+.igual:hover,
+.igual:active
+.igual.active {
+    background-color: #F44336;
+    border: 1px solid #F44336;
+}
