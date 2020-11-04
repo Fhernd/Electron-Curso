@@ -43,13 +43,37 @@ function presionTecla(evento, tecla) {
         }
 
         puntoPresionado = false;
+    } else if (tecla == '.') {
+        if (!puntoPresionado) {
+            puntoPresionado = true;
+            pantalla.textContent += tecla;
+        }
+    } else {
+        pantalla.textContent += tecla;
     }
+
+    evento.preventDefault();
 }
 
 function pulsacionTeclas(evento) {
+    resaltarTecla(evento.key);
 
+    // TODO...
 }
 
 function limpiarPantalla() {
+    pantalla.textContent = '';
+    puntoPresionado = false;
+}
 
+function resaltarTecla(tecla) {
+    let teclaPresionada = document.querySelector(`span[data-tecla="${tecla}"]`);
+
+    if (teclaPresionada) {
+        teclaPresionada.classList.add('activa');
+
+        setTimeout(() => {
+            teclaPresionada.classList.remove('activa');
+        }, 250);
+    }
 }
