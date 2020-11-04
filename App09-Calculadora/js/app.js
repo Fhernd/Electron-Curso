@@ -29,6 +29,20 @@ function presionTecla(evento, tecla) {
         }
 
         puntoPresionado = false;
+    } else if (operadores.indexOf(tecla) != -1) {
+        let ultimoCaracter = valorIngresado[valorIngresado.length - 1];
+
+        if (valorIngresado != '' && operadores.indexOf(ultimoCaracter) === -1) {
+            pantalla.textContent += tecla;
+        } else if (valorIngresado == '' && tecla == '-') {
+            pantalla.textContent += tecla;
+        }
+
+        if (operadores.indexOf(ultimoCaracter) != -1 && valorIngresado.length > 1) {
+            pantalla.textContent = valorIngresado.replace(/.$/, tecla);
+        }
+
+        puntoPresionado = false;
     }
 }
 
