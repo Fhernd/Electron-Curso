@@ -58,7 +58,23 @@ function presionTecla(evento, tecla) {
 function pulsacionTeclas(evento) {
     resaltarTecla(evento.key);
 
-    // TODO...
+    if (evento.code.indexOf('Numpad') == 0) {
+        if (evento.key == 'Enter') {
+            return presionTecla(evento, '=');
+        }
+
+        presionTecla(evento, evento.key);
+    } else if (!isNaN(+evento.key)) {
+        presionTecla(evento, evento.key);
+    } else if (evento.key == '+' || evento.key == '-' || evento.key == '/' || evento.key == '.' || evento.key == '=') {
+        presionTecla(evento, evento.key);
+    } else if (evento.key == 'Backspace') {
+        pantalla = document.querySelector('.pantalla p');
+        valorIngresado = pantalla.textContent;
+        let contenido = valorIngresado.split('');
+        contenido.pop();
+        pantalla.textContent = contenido.join('');
+    }
 }
 
 function limpiarPantalla() {
