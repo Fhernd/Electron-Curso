@@ -74,6 +74,10 @@ function pulsacionTeclas(evento) {
         let contenido = valorIngresado.split('');
         contenido.pop();
         pantalla.textContent = contenido.join('');
+    } else if (evento.key == 'c' || evento.key == 'C') {
+        limpiarPantalla();
+    } else if (evento.key == 'Enter') {
+        presionTecla(evento, '=');
     }
 }
 
