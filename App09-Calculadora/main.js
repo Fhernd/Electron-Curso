@@ -6,8 +6,8 @@ let ventanaPrincipal;
 
 app.on('ready', () => {
     ventanaPrincipal = new BrowserWindow({
-        width: 350,
-        height: 500,
+        width: 450,
+        height: 600,
         resizable: false,
         title: 'Calculadora',
         transparent: true,
@@ -18,6 +18,8 @@ app.on('ready', () => {
     });
 
     ventanaPrincipal.loadURL(`file://${__dirname}/index.html`);
+
+    ventanaPrincipal.webContents.openDevTools();
 
     let plantillaMenu = Menu.buildFromTemplate([
         {
