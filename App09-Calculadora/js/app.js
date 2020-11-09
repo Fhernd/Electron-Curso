@@ -1,4 +1,4 @@
-let teclas = document.querySelector('#calculadora span');
+let teclas = document.querySelectorAll('#calculadora span');
 let operadores = ['+', '-', '*', '/'];
 let puntoPresionado = false;
 
@@ -12,11 +12,11 @@ for(let i = 0; i < teclas.length; ++i) {
 document.addEventListener('keydown', pulsacionTeclas)
 
 function presionTecla(evento, tecla) {
-    let valorIngresado = pantalla.textContent;
+    let valorIngresado = tecla || this.textContent;
 
-    if (tecla == 'C') {
+    if (valorIngresado == 'C') {
         limpiarPantalla();
-    } else if (tecla == '=') {
+    } else if (valorIngresado == '=') {
         let ecuacion = valorIngresado;
         let ultimoCaracter = ecuacion[ecuacion.length - 1];
 
@@ -29,27 +29,27 @@ function presionTecla(evento, tecla) {
         }
 
         puntoPresionado = false;
-    } else if (operadores.indexOf(tecla) != -1) {
+    } else if (operadores.indexOf(valorIngresado) != -1) {
         let ultimoCaracter = valorIngresado[valorIngresado.length - 1];
 
         if (valorIngresado != '' && operadores.indexOf(ultimoCaracter) === -1) {
-            pantalla.textContent += tecla;
-        } else if (valorIngresado == '' && tecla == '-') {
-            pantalla.textContent += tecla;
+            pantalla.textContent += valorIngresado;
+        } else if (valorIngresado == '' && valorIngresado == '-') {
+            pantalla.textContent += valorIngresado;
         }
 
         if (operadores.indexOf(ultimoCaracter) != -1 && valorIngresado.length > 1) {
-            pantalla.textContent = valorIngresado.replace(/.$/, tecla);
+            pantalla.textContent = valorIngresado.replace(/.$/, valorIngresado);
         }
 
         puntoPresionado = false;
-    } else if (tecla == '.') {
+    } else if (valorIngresado == '.') {
         if (!puntoPresionado) {
             puntoPresionado = true;
-            pantalla.textContent += tecla;
+            pantalla.textContent += valorIngresado;
         }
     } else {
-        pantalla.textContent += tecla;
+        pantalla.textContent += valorIngresado;
     }
 
     evento.preventDefault();

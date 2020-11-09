@@ -8,7 +8,7 @@ app.on('ready', () => {
     ventanaPrincipal = new BrowserWindow({
         width: 450,
         height: 600,
-        resizable: false,
+        resizable: true,
         title: 'Calculadora',
         transparent: true,
         frame: false,
