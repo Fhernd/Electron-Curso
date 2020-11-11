@@ -12,11 +12,12 @@ for(let i = 0; i < teclas.length; ++i) {
 document.addEventListener('keydown', pulsacionTeclas)
 
 function presionTecla(evento, tecla) {
-    let valorIngresado = tecla || this.textContent;
+    let valorIngresado = pantalla.textContent;
+    tecla = tecla || this.textContent;
 
-    if (valorIngresado == 'C') {
+    if (tecla == 'C') {
         limpiarPantalla();
-    } else if (valorIngresado == '=') {
+    } else if (tecla == '=') {
         let ecuacion = valorIngresado;
         let ultimoCaracter = ecuacion[ecuacion.length - 1];
 
@@ -29,27 +30,27 @@ function presionTecla(evento, tecla) {
         }
 
         puntoPresionado = false;
-    } else if (operadores.indexOf(valorIngresado) != -1) {
+    } else if (operadores.indexOf(tecla) != -1) {
         let ultimoCaracter = valorIngresado[valorIngresado.length - 1];
 
         if (valorIngresado != '' && operadores.indexOf(ultimoCaracter) === -1) {
-            pantalla.textContent += valorIngresado;
-        } else if (valorIngresado == '' && valorIngresado == '-') {
-            pantalla.textContent += valorIngresado;
+            pantalla.textContent += tecla;
+        } else if (valorIngresado == '' && tecla == '-') {
+            pantalla.textContent += tecla;
         }
 
         if (operadores.indexOf(ultimoCaracter) != -1 && valorIngresado.length > 1) {
-            pantalla.textContent = valorIngresado.replace(/.$/, valorIngresado);
+            pantalla.textContent = valorIngresado.replace(/.$/, tecla);
         }
 
         puntoPresionado = false;
-    } else if (valorIngresado == '.') {
+    } else if (tecla == '.') {
         if (!puntoPresionado) {
             puntoPresionado = true;
-            pantalla.textContent += valorIngresado;
+            pantalla.textContent += tecla;
         }
     } else {
-        pantalla.textContent += valorIngresado;
+        pantalla.textContent += tecla;
     }
 
     evento.preventDefault();
