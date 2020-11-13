@@ -1,5 +1,5 @@
 let teclas = document.querySelectorAll('#calculadora span');
-let operadores = ['+', '-', '*', '/'];
+let operadores = ['+', '-', '×', '÷'];
 let puntoPresionado = false;
 
 let pantalla = document.querySelector('.pantalla p');
@@ -26,6 +26,7 @@ function presionTecla(evento, tecla) {
         }
 
         if (ecuacion) {
+            ecuacion = ecuacion.replace('÷', '/').replace('×', '*');
             pantalla.textContent = eval(ecuacion);
         }
 
