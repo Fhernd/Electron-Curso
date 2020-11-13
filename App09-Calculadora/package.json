@@ -1,11 +1,14 @@
 {
   "name": "app09-calculadora",
   "version": "1.0.0",
-  "description": "calculadora multiplataforma (Linux, macOS, Windows)",
+  "description": "Calculadora Multiplataforma (Linux, macOS, Windows)",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "electron-builder",
+    "build-linux": "electron-builder -l",
+    "build-macos": "electron-builder -m",
+    "build-windows": "electron-builder -w"
   },
   "repository": {
     "type": "git",
