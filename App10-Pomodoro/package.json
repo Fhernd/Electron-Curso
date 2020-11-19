@@ -1,0 +1,33 @@
+{
+  "name": "app10-pomodoro",
+  "version": "1.0.0",
+  "description": "Pomodoro - Gestor de tiempo",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fhernd/Electron-Curso.git"
+  },
+  "keywords": [
+    "electron",
+    "framework",
+    "JavaScript",
+    "CSS",
+    "HTML",
+    "node",
+    "pomodoro",
+    "escritorio",
+    "aplicación",
+    "Linux",
+    "macOS",
+    "Windows"
+  ],
+  "author": "John Ortiz Ordoñez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fhernd/Electron-Curso/issues"
+  },
+  "homepage": "https://github.com/Fhernd/Electron-Curso#readme"
+}
