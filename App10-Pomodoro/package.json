@@ -4,7 +4,11 @@
   "description": "Pomodoro - Gestor de tiempo",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder",
+    "build-linux": "electron-builder -l",
+    "build-macos": "electron-builder -m",
+    "build-windows": "electron-builder -w"
   },
   "repository": {
     "type": "git",
