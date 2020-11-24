@@ -48,6 +48,36 @@
                     <path d="M0 0h24v24H0z" fill="none" />
                 </svg>
             </div>
+
+            <div class="boton-reloj boton-pausar oculto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+                    fill="var(--offwhite)">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                </svg>
+            </div>
+        </div>
+
+        <button class="boton boton-sin-borde boton-detener">Detener</button>
+    </div>
+
+    <div class="configuracion area-configuracion">
+        <div class="configuracion-basica-area">
+            <div class="configuracion-area">
+                <p class="configuracion-titulo">Focalizado</p>
+                <span class="configuracion-rango"></span>
+            </div>
+
+            <input type="range" class="configuracion-rango-valor" min="1" max="60" value="" data-modo="focalizado">
+        </div>
+
+        <div class="configuracion-basica-area">
+            <div class="configuracion-titulo-area">
+                <p class="configuracion-titulo">Descanso</p>
+                <span class="configuracion-rango"></span>
+            </div>
+
+            <input type="range" class="configuracion-rango-valor" min="1" max="60" value="" data-modo="descanso">
         </div>
     </div>
 </body>
