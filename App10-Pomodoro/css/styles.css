@@ -1,0 +1,45 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: aliceblue;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 21;
+    overflow: hidden;
+}
+
+nav.navegacion {
+    align-items: center;
+    background-color: crimson;
+    display: flex;
+    height: 2em;
+    justify-content: space-between;
+    -webkit-app-region: drag;
+}
+
+.logo {
+    color: darkcyan;
+    flex-basis: 55%;
+    text-align: right;
+}
+
+.barra {
+    display: flex;
+    margin-right: 0.5em;
+    -webkit-app-region: no-drag;
+}
+
+.icono:hover svg {
+    fill: lightblue;
+}
+
+.barra > .icono {
+    padding: 0 0.4em;
+}
