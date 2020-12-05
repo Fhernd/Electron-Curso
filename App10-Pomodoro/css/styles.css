@@ -116,3 +116,34 @@ nav.navegacion {
     font-weight: 200;
     padding: 0;
 }
+
+.configuracion {
+    align-items: center;
+    background-color: crimson;
+    display: flex;
+    flex-direction: column;
+    height: 15em;
+    position: absolute;
+    transition: all 0.5s ease;
+    top: 2em;
+    width: 22em;
+}
+
+.configuracion-temporizador {
+    justify-content: space-around;
+    transform: translate(-100%, 0);
+}
+
+.configuracion-basica-area {
+    background-color: lightblue;
+    border-radius: 5px;
+    padding: 0.5em;
+    width: 90%;
+}
+
+.configuracion-area {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
