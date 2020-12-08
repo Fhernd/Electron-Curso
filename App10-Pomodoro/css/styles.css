@@ -147,3 +147,45 @@ nav.navegacion {
     flex-direction: row;
     justify-content: space-between;
 }
+
+.configuracion-titulo {
+    color: black;
+}
+
+span.configuracion-rango {
+    align-self: center;
+    background-color: lightblue;
+    border-radius: 2px;
+    font-size: 0.7em;
+    padding: 1px 5px;
+}
+
+.configuracion-rango-valor {
+    background: white;
+    border-radius: 0.5em;
+    height: 0.5em;
+    margin: 0px;
+    outline: none;
+    padding: 0px;
+    width: 100%;
+    -webkit-appearance: none;
+}
+
+.configuracion-rango-valor:focus {
+    outline: none;
+}
+
+.configuracion-rango-valor::-webkit-slider-thumb {
+    background-color: crimson;
+    border-radius: 50%;
+    box-shadow: 0 0 0 crimson;
+    cursor: pointer;
+    height: 1.5em;
+    transition: box-shadow 0.20s ease;
+    width: 1.5em;
+    -webkit-appearance: none;
+}
+
+.configuracion-rango-valor::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 1em crimson;
+}
