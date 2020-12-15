@@ -18,6 +18,7 @@ function crearVentanaPrincipal() {
     ventanaPrincipal.on('close', () => {
         ventanaPrincipal = null
     });
+    
     ventanaPrincipal.once('ready-to-show', () => {
         ventanaPrincipal.show();
     });
@@ -26,3 +27,29 @@ function crearVentanaPrincipal() {
 app.on('ready', () => {
     crearVentanaPrincipal();
 });
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
+
+app.on('activate', () => {
+    if (ventanaPrincipal === null) {
+        crearVentanaPrincipal();
+    }
+});
+
+const unicaInstancia = app.requestSingleInstanceLock();
+
+if (!unicaInstancia) {
+    app.quit();
+} else {
+    app.on('second-instance', () => {
+        if (ventanaPrincipal.isMaximized()) {
+            ventanaPrincipal.restore();
+        }
+        
+        ventanaPrincipal.focus();
+    });
+}
