@@ -2,7 +2,25 @@ const path = require('path');
 
 const {app, BrowserWindow, ipcMain} = require('electron');
 
+const APLICACION_NOMBRE = require(path.join(__dirname, 'package.json')).name;
+const APLICACION_VERSION = require(path.join(__dirname, 'package.json')).version;
+const APLICACION_URL = require(path.join(__dirname, 'package.json')).repository.url;
+
+const CONFIGURA_PREDETERMINADA = {
+    concentracion: 25,
+    break: 5,
+    iteraciones: 4
+}
+
+let iteracionActual = 1;
+let iteracionUsuario = null;
+
+app.allowRendererProcessReuse = true;
+
 let ventanaPrincipal;
+let ventanaSecundaria;
+
+// let notificaciones = new Notificacion();
 
 function crearVentanaPrincipal() {
     ventanaPrincipal = new BrowserWindow({
@@ -21,6 +39,12 @@ function crearVentanaPrincipal() {
     
     ventanaPrincipal.once('ready-to-show', () => {
         ventanaPrincipal.show();
+    });
+}
+
+function crearVentanaSecundaria() {
+    ventanaSecundaria = new BrowserWindow({
+        
     });
 }
 
