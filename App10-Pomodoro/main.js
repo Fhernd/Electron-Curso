@@ -20,7 +20,7 @@ app.allowRendererProcessReuse = true;
 let ventanaPrincipal;
 let ventanaSecundaria;
 
-// let notificaciones = new Notificacion();
+let notificaciones;
 
 function crearVentanaPrincipal() {
     ventanaPrincipal = new BrowserWindow({
@@ -81,6 +81,35 @@ ipcMain.on('CuentaRegresivaCompletada', function(evento) {
     crearVentanaSecundaria();
     ventanaSecundaria.once('ready-to-show', () => {
         ventanaSecundaria.show();
+    });
+});
+
+ipcMain.on('IniciarSiguienteIteracion', function() {
+    if (iteracionActual < iteracionUsuario) {
+        ventanaPrincipal.webContents.send('ReiniciarYEmpezar');
+        ++iteracionActual;
+    } else {
+        iteracionActual = 1;
+    }
+});
+
+ipcMain.on('CerrarAplicacion', () => {
+    BrowserWindow.getAllWindows().forEach((ventana) => {
+        ventana.close();
+    });
+});
+
+ipcMain.on('AlertaBreak', function(evento, modo) {
+    if (modo === 'break') {
+        if (iteracionActual === iteracionUsuario) {
+            return;
+        }
+    }
+
+    notificaciones.alertaBreak({
+        title: 'Información',
+        modo: modo,
+        mensaje: 'El temporizador Pomodoro empezará en 5 segundos.'
     });
 });
 
