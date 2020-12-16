@@ -6,7 +6,7 @@ const APLICACION_NOMBRE = require(path.join(__dirname, 'package.json')).name;
 const APLICACION_VERSION = require(path.join(__dirname, 'package.json')).version;
 const APLICACION_URL = require(path.join(__dirname, 'package.json')).repository.url;
 
-const CONFIGURA_PREDETERMINADA = {
+const CONFIGURACION_PREDETERMINADA = {
     concentracion: 25,
     break: 5,
     iteraciones: 4
@@ -69,6 +69,20 @@ ipcMain.on('AplicacionUrl', (evento) => {
 });
 ipcMain.on('AplicacionMaximizar', () => { ventanaPrincipal.show() });
 ipcMain.on('AplicacionMinimizar', () => { ventanaPrincipal.minimize() });
+ipcMain.on('CerrarVentanaBreak', () => { ventanaSecundaria.close() });
+ipcMain.on('ConfiguracionPredeterminada', (evento) => { evento.returnValue = JSON.stringify(CONFIGURACION_PREDETERMINADA) });
+ipcMain.on('SetIteracionUsuario', (e, iteracion) => {
+    iteracionUsuario = Number(iteracion);
+});
+
+ipcMain.on('CuentaRegresivaCompletada', function(evento) {
+    evento.sender.send('renderizarRelojPredeterminado');
+
+    crearVentanaSecundaria();
+    ventanaSecundaria.once('ready-to-show', () => {
+        ventanaSecundaria.show();
+    });
+});
 
 app.on('ready', () => {
     crearVentanaPrincipal();
