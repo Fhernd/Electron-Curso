@@ -44,9 +44,31 @@ function crearVentanaPrincipal() {
 
 function crearVentanaSecundaria() {
     ventanaSecundaria = new BrowserWindow({
-        
+        alwaysOnTop: true,
+        frame: false,
+        resizable: false,
+        show: false,
+        transparent: true,
+        webPreferences: {
+            nodeIntegration: true
+        }
     });
+
+    ventanaSecundaria.loadURL(path.join('file://', __dirname, 'ventana_emergente.html'));
+    ventanaSecundaria.maximize();
 }
+
+ipcMain.on('AplicacionNombre', (evento) => {
+    evento.returnValue = APLICACION_NOMBRE;
+});
+ipcMain.on('AplicacionVersion', (evento) => {
+    evento.returnValue = APLICACION_VERSION;
+});
+ipcMain.on('AplicacionUrl', (evento) => {
+    evento.returnValue = APLICACION_URL;
+});
+ipcMain.on('AplicacionMaximizar', () => { ventanaPrincipal.show() });
+ipcMain.on('AplicacionMinimizar', () => { ventanaPrincipal.minimize() });
 
 app.on('ready', () => {
     crearVentanaPrincipal();
