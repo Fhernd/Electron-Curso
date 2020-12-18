@@ -1,0 +1,52 @@
+body {
+    background-color: rgba(16, 70, 92, 0.55);
+}
+
+.contenedor {
+    overflow: hidden;
+    position: relative;
+}
+
+.ventana-emergente {
+    align-items: center;
+    background-color: #FFAF20;
+    color: #10455B;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 4em;
+    position: relative;
+    width: 25em;
+}
+
+.tareas {
+    margin-bottom: 3em;
+}
+
+ul.tareas-lista {
+    font-weight: 200;
+    list-style-position: inside;
+    margin-top: 1em;
+}
+
+ul.tareas-lista li {
+    margin-top: 0.4em;
+}
+
+.texto-centrado {
+    color: #FFF;
+}
+
+.break {
+    animation: break alternate infinite ease-in-out 4s;
+}
+
+@keyframes break {
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1.0);
+    }
+}
