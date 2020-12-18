@@ -1,6 +1,7 @@
 const path = require('path');
-
 const {app, BrowserWindow, ipcMain} = require('electron');
+
+const Notificacion = require('./js/notificacion');
 
 const APLICACION_NOMBRE = require(path.join(__dirname, 'package.json')).name;
 const APLICACION_VERSION = require(path.join(__dirname, 'package.json')).version;
@@ -20,7 +21,7 @@ app.allowRendererProcessReuse = true;
 let ventanaPrincipal;
 let ventanaSecundaria;
 
-let notificaciones;
+let notificaciones = new Notificacion();
 
 function crearVentanaPrincipal() {
     ventanaPrincipal = new BrowserWindow({

@@ -37,5 +37,8 @@
   "devDependencies": {
     "electron": "^11.0.2",
     "electron-builder": "^22.9.1"
+  },
+  "dependencies": {
+    "node-notifier": "^9.0.0"
   }
 }
