@@ -13,3 +13,20 @@ module.exports.elementos_gui = {
     RANGO_VALOR: document.querySelector('.configuracion-rango-valor'),
     VENTANA_ACERCA_DE: document.querySelector('.acerca-de')
 }
+
+module.exports.constantes = {
+    ALMACENAMIENTO_USUARIO: 'ALMACENAMIENTO_USUARIO',
+    ALMACENAMIENTO_PREDETERMINADO: 'ALMACENAMIENTO_PREDETERMINADO'
+}
+
+module.exports.reintentar = (fn, retraso) => {
+    let reintento;
+
+    return function() {
+        const contexto = this;
+        const argumentos = arguments;
+        clearTimeout(reintento)
+
+        reintento = setTimeout(() => fn.apply(contexto, argumentos), retraso);
+    }
+}
