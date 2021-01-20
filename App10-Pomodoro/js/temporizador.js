@@ -44,14 +44,30 @@ class Temporizador {
                     this.renderizarMinutosSegundos(minutos, segundos);
                 }
             }
-        });
+        }, 1000);
+    }
+
+    iniciar() {
+        this.enEjecucion = true;
+        this.contador();
+    }
+
+    pausar() {
+        this.enEjecucion = false;
+        clearInterval(this.id);
     }
 
     detener() {
-        // TODO: Pendiente de implementación...
+        this.cuentaRegresiva = null;
+        clearInterval(this.id);
+        this.id = null;
+        this.enEjecucion = false;
     }
 
     renderizarMinutosSegundos(minutos, segundos) {
-        // TODO: Pendiente de implementación...
+        elementos_gui.RELOJ_MINUTOS.firstElementChild.innerHTML = minutos;
+        elementos_gui.RELOJ_SEGUNDOS.firstElementChild.innerHTML = segundos;
     }
 }
+
+modules.exports = Temporizador;
