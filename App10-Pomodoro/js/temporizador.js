@@ -33,14 +33,25 @@ class Temporizador {
                     if (this.modo == 'concentrado') {
                         ipcRenderer.send('CuentaRegresivaCompletada');
                     } else if (this.modo == 'break') {
-                        
+                        ipcRenderer.send('CerrarVentanaBreak');
+                        ipcRenderer.send('AplicacionMaximizar');
+                        ipcRenderer.send('IniciarSiguienteIteracion');
                     }
+                } else if (this.cuentaRegresiva === 5000) {
+                    this.renderizarMinutosSegundos(minutos, segundos)
+                    ipcRenderer.send('AlertaBreak', this.modo);
+                } else {
+                    this.renderizarMinutosSegundos(minutos, segundos);
                 }
             }
         });
     }
 
     detener() {
+        // TODO: Pendiente de implementación...
+    }
+
+    renderizarMinutosSegundos(minutos, segundos) {
         // TODO: Pendiente de implementación...
     }
 }
