@@ -13,3 +13,26 @@ elementos_gui.BOTON_INICIAR.addEventListener('click', () => {
     
     modoConcentrado.iniciar();
 });
+
+elementos_gui.BOTON_DETENER.addEventListener('click', () => {
+    modoConcentrado.detener();
+
+    validarEstado();
+
+    configurarReloj();
+});
+
+elementos_gui.BOTON_PAUSAR.addEventListener('click', function() {
+    elementos_gui.BOTON_INICIAR.classList.remove('oculto');
+    elementos_gui.BOTON_PAUSAR.classList.remove('oculto');
+
+    modoConcentrado.pausar();
+});
+
+function validarEstado() {
+    // TODO: Pendiente de implementar...
+}
+
+function configurarReloj() {
+    // TODO: Pendiente de implementar...
+}

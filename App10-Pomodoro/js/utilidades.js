@@ -7,6 +7,7 @@ module.exports.elementos_gui = {
     BOTON_PAUSAR: document.querySelector('.boton-pausar'),
     BOTON_GUARDAR: document.querySelector('.boton-guardar'),
     BOTON_REINICIAR: document.querySelector('.boton-reiniciar'),
+    BOTON_DETENER: document.querySelector('.boton-detener'),
     AREA_CONFIGURACION_BASICA: document.querySelector('.configuracion-basica-area'),
     RELOJ_MINUTOS: document.querySelector('.reloj-minutos'),
     RELOJ_SEGUNDOS: document.querySelector('.reloj-segundos'),
