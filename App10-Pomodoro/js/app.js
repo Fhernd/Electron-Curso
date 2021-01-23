@@ -30,9 +30,34 @@ elementos_gui.BOTON_PAUSAR.addEventListener('click', function() {
 });
 
 function validarEstado() {
-    // TODO: Pendiente de implementar...
+    if (!modoConcentrado.estaEnEjecucion()) {
+        elementos_gui.BOTON_INICIAR.classList.remove('oculto');
+        elementos_gui.BOTON_PAUSAR.classList.remove('oculto');
+    } else {
+        elementos_gui.BOTON_INICIAR.classList.add('oculto');
+        elementos_gui.BOTON_PAUSAR.classList.add('oculto');
+    }
 }
 
 function configurarReloj() {
-    // TODO: Pendiente de implementar...
+    elementos_gui.RELOJ_MINUTOS.firstElementChild.innerHTML = configuracionUsuario.concentrado;
+    elementos_gui.RELOJ_SEGUNDOS.firstElementChild.innerHTML = '00';
+}
+
+function guardarDatos() {
+    STORAGE.setItem(constantes.ALMACENAMIENTO_USUARIO, JSON.stringify(configuracionUsuario));
+
+    modoConcentrado.detener();
+
+    modoConcentrado = new Temporizador('concentrado', configuracionUsuario.concentrado);
+
+    validarEstado();
+
+    configurarReloj();
+
+    alternarEstadoReloj();
+}
+
+function alternarEstadoReloj() {
+    // TODO: Pendiente de implementación...
 }

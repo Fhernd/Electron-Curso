@@ -68,6 +68,10 @@ class Temporizador {
         elementos_gui.RELOJ_MINUTOS.firstElementChild.innerHTML = minutos;
         elementos_gui.RELOJ_SEGUNDOS.firstElementChild.innerHTML = segundos;
     }
+
+    estaEnEjecucion() {
+        return this.enEjecucion();
+    }
 }
 
 modules.exports = Temporizador;
