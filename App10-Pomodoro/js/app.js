@@ -68,5 +68,14 @@ function alternarEstadoRelojIzquierda() {
 }
 
 function alternarEstadoRelojDerecha() {
-    // TODO: Pendiente de implementar...
+    if (elementos_gui.AREA_CONFIGURACION.classList.contains('icono-activo')) {
+        alternarEstadoRelojIzquierda();
+    }
+
+    elementos_gui.VENTANA_ACERCA_DE.classList.toggle('lado-derecho');
+    elementos_gui.BOTON_ACERCA_DE.classList.toggle('icono-activo');
+}
+
+function cerrarVentana() {
+    ipcRenderer.send('CerrarAplicacion');
 }
