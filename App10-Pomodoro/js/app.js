@@ -55,9 +55,18 @@ function guardarDatos() {
 
     configurarReloj();
 
-    alternarEstadoReloj();
+    alternarEstadoRelojIzquierda();
 }
 
-function alternarEstadoReloj() {
-    // TODO: Pendiente de implementación...
+function alternarEstadoRelojIzquierda() {
+    if (elementos_gui.BOTON_ACERCA_DE.classList.contains('icono-activo')) {
+        alternarEstadoRelojDerecha();
+    }
+
+    elementos_gui.AREA_CONFIGURACION_BASICA.classList.toggle('lado-izquierdo');
+    elementos_gui.AREA_CONFIGURACION.classList.toggle('icono-activo');
+}
+
+function alternarEstadoRelojDerecha() {
+    // TODO: Pendiente de implementar...
 }

@@ -9,6 +9,7 @@ module.exports.elementos_gui = {
     BOTON_REINICIAR: document.querySelector('.boton-reiniciar'),
     BOTON_DETENER: document.querySelector('.boton-detener'),
     AREA_CONFIGURACION_BASICA: document.querySelector('.configuracion-basica-area'),
+    AREA_CONFIGURACION: document.querySelector('.configuracion-area'),
     RELOJ_MINUTOS: document.querySelector('.reloj-minutos'),
     RELOJ_SEGUNDOS: document.querySelector('.reloj-segundos'),
     RANGO_VALOR: document.querySelector('.configuracion-rango-valor'),
