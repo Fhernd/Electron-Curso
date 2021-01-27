@@ -79,3 +79,28 @@ function alternarEstadoRelojDerecha() {
 function cerrarVentana() {
     ipcRenderer.send('CerrarAplicacion');
 }
+
+function minimizarVentana() {
+    ipcRenderer.send('AplicacionMinimizar');
+}
+
+function mostrarPanelLateral() {
+    elementos_gui.RANGO_VALOR.forEach((r) => {
+        let modoTrabajo = r.dataset.modo;
+        let contenido = r.parentNode.firstElementChild.lastElementChild;
+
+        switch(modoTrabajo) {
+            case 'focalizado':
+                mostrarValor(r, contenido, modoTrabajo);
+                break;
+            case 'break':
+                mostrarValor(r, contenido, modoTrabajo);
+                break;
+            case 'iteraciones':
+                mostrarValor(r, contenido, modoTrabajo);
+                break;
+        }
+
+        
+    });
+}
