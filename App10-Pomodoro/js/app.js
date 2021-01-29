@@ -103,9 +103,16 @@ function mostrarPanelLateral() {
 
         r.addEventListener('input', optimizar(function(evento) {
             evento.srcElement.previousElementSibling.lastElementChild.textContent = `${evento.target.value}`;
-            configuracionUsuario[event.srcElement.dataset.modo] = Number(evento.target.value);
+            configuracionUsuario[evento.srcElement.dataset.modo] = Number(evento.target.value);
 
             ipcRenderer.send('EstablecerIteracionUsuario', configuracionUsuario.iteraciones);
         }, 30));
     });
+
+    ipcRenderer.send('EstablecerIteracionUsuario', configuracionUsuario.iteraciones);
+}
+
+function mostrarValor(input, contenido, modoTrabajo) {
+    input.value = configuracionUsuario[modoTrabajo];
+    contenido.innerHTML = `${configuracionUsuario[modoTrabajo]}`;
 }
