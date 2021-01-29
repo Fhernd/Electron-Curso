@@ -21,7 +21,7 @@ module.exports.constantes = {
     ALMACENAMIENTO_PREDETERMINADO: 'ALMACENAMIENTO_PREDETERMINADO'
 }
 
-module.exports.reintentar = (fn, retraso) => {
+module.exports.optimizar = (fn, retraso) => {
     let reintento;
 
     return function() {

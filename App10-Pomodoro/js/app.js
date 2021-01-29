@@ -1,5 +1,5 @@
 const {ipcRenderer, shell} = require('electron');
-const {constantes, elementos_gui, reintentar} = require('./utilidades');
+const {constantes, elementos_gui, optimizar} = require('./utilidades');
 const Temporizador = require('./temporizador');
 
 const STORAGE = localStorage;
@@ -101,6 +101,11 @@ function mostrarPanelLateral() {
                 break;
         }
 
-        
+        r.addEventListener('input', optimizar(function(evento) {
+            evento.srcElement.previousElementSibling.lastElementChild.textContent = `${evento.target.value}`;
+            configuracionUsuario[event.srcElement.dataset.modo] = Number(evento.target.value);
+
+            ipcRenderer.send('EstablecerIteracionUsuario', configuracionUsuario.iteraciones);
+        }, 30));
     });
 }

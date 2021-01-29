@@ -72,7 +72,7 @@ ipcMain.on('AplicacionMaximizar', () => { ventanaPrincipal.show() });
 ipcMain.on('AplicacionMinimizar', () => { ventanaPrincipal.minimize() });
 ipcMain.on('CerrarVentanaBreak', () => { ventanaSecundaria.close() });
 ipcMain.on('ConfiguracionPredeterminada', (evento) => { evento.returnValue = JSON.stringify(CONFIGURACION_PREDETERMINADA) });
-ipcMain.on('SetIteracionUsuario', (e, iteracion) => {
+ipcMain.on('EstablecerIteracionUsuario', (e, iteracion) => {
     iteracionUsuario = Number(iteracion);
 });
 
