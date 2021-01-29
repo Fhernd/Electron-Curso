@@ -5,17 +5,17 @@ const Temporizador = require('./temporizador');
 const STORAGE = localStorage;
 
 let configuracionUsuario;
-let modoConcentrado;
+let temporizador;
 
 elementos_gui.BOTON_INICIAR.addEventListener('click', () => {
     elementos_gui.BOTON_PAUSAR.classList.add('oculto');
     elementos_gui.BOTON_INICIAR.classList.add('oculto');
     
-    modoConcentrado.iniciar();
+    temporizador.iniciar();
 });
 
 elementos_gui.BOTON_DETENER.addEventListener('click', () => {
-    modoConcentrado.detener();
+    temporizador.detener();
 
     validarEstado();
 
@@ -26,11 +26,11 @@ elementos_gui.BOTON_PAUSAR.addEventListener('click', function() {
     elementos_gui.BOTON_INICIAR.classList.remove('oculto');
     elementos_gui.BOTON_PAUSAR.classList.remove('oculto');
 
-    modoConcentrado.pausar();
+    temporizador.pausar();
 });
 
 function validarEstado() {
-    if (!modoConcentrado.estaEnEjecucion()) {
+    if (!temporizador.estaEnEjecucion()) {
         elementos_gui.BOTON_INICIAR.classList.remove('oculto');
         elementos_gui.BOTON_PAUSAR.classList.remove('oculto');
     } else {
@@ -47,9 +47,9 @@ function configurarReloj() {
 function guardarDatos() {
     STORAGE.setItem(constantes.ALMACENAMIENTO_USUARIO, JSON.stringify(configuracionUsuario));
 
-    modoConcentrado.detener();
+    temporizador.detener();
 
-    modoConcentrado = new Temporizador('concentrado', configuracionUsuario.concentrado);
+    temporizador = new Temporizador('concentrado', configuracionUsuario.concentrado);
 
     validarEstado();
 
@@ -129,4 +129,19 @@ elementos_gui.BOTON_REINICIAR.addEventListener('click', () => {
     STORAGE.setItem(constantes.ALMACENAMIENTO_USUARIO, ipcRenderer.sendSync('ConfiguracionPredeterminada'));
 
     configuracionUsuario = JSON.parse(STORAGE.getItem(constantes.ALMACENAMIENTO_PREDETERMINADO));
+
+    temporizador.detener();
+
+    validarEstado();
+    configurarReloj();
+    alternarEstadoRelojIzquierda();
+    mostrarPanelLateral();
+});
+
+elementos_gui.BOTON_GUARDAR.addEventListener('click', guardarDatos);
+
+window.addEventListener('load', () => {
+    if (!STORAGE.getItem(constantes.ALMACENAMIENTO_USUARIO) || !STORAGE.getItem(constantes.ALMACENAMIENTO_PREDETERMINADO)) {
+        STORAGE.setItem(constantes.ALMACENAMIENTO_PREDETERMINADO, ipcRenderer.sendSync('ConfiguracionPredeterminada'));
+    }
 });
