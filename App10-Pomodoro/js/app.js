@@ -116,3 +116,17 @@ function mostrarValor(input, contenido, modoTrabajo) {
     input.value = configuracionUsuario[modoTrabajo];
     contenido.innerHTML = `${configuracionUsuario[modoTrabajo]}`;
 }
+
+elementos_gui.BOTON_CERRAR.addEventListener('click', cerrarVentana);
+
+elementos_gui.BOTON_MINIMIZAR.addEventListener('click', minimizarVentana);
+
+elementos_gui.AREA_CONFIGURACION.addEventListener('click', alternarEstadoRelojIzquierda);
+
+elementos_gui.BOTON_ACERCA_DE.addEventListener('click', alternarEstadoRelojDerecha);
+
+elementos_gui.BOTON_REINICIAR.addEventListener('click', () => {
+    STORAGE.setItem(constantes.ALMACENAMIENTO_USUARIO, ipcRenderer.sendSync('ConfiguracionPredeterminada'));
+
+    configuracionUsuario = JSON.parse(STORAGE.getItem(constantes.ALMACENAMIENTO_PREDETERMINADO));
+});
