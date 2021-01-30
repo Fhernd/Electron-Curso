@@ -144,4 +144,19 @@ window.addEventListener('load', () => {
     if (!STORAGE.getItem(constantes.ALMACENAMIENTO_USUARIO) || !STORAGE.getItem(constantes.ALMACENAMIENTO_PREDETERMINADO)) {
         STORAGE.setItem(constantes.ALMACENAMIENTO_PREDETERMINADO, ipcRenderer.sendSync('ConfiguracionPredeterminada'));
     }
+
+    configuracionUsuario = JSON.parse(STORAGE.getItem(constantes.ALMACENAMIENTO_USUARIO));
+    temporizador = Temporizador('focalizado', configuracionUsuario.focalizado);
+
+    configurarReloj();
+    mostrarPanelLateral();
+    mostrarInformacionAcercaDe();
 });
+
+function mostrarInformacionAcercaDe() {
+    let acercaDe = `
+        <figure class="acerca-de-figura">
+            <img src="/images/pomodoro.png" height="100" width="100" alt="Pomodoro Logo"/>
+        </figure>
+    `;
+}
