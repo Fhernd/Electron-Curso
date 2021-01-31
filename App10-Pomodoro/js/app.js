@@ -157,6 +157,9 @@ function mostrarInformacionAcercaDe() {
     let acercaDe = `
         <figure class="acerca-de-figura">
             <img src="/images/pomodoro.png" height="100" width="100" alt="Pomodoro Logo"/>
+            <figcaption class="acerca-de-caption">${ipcRenderer.sendSync('AplicacionNombre')}</figcaption>
         </figure>
+        <p>${ipcRenderer.sendSync('AplicacionVersion')}</p>
+        <p><a href="https://github.com/Fhernd/Electron-Curso.git">Repositorio</a></p>
     `;
 }
