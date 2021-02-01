@@ -160,6 +160,12 @@ function mostrarInformacionAcercaDe() {
             <figcaption class="acerca-de-caption">${ipcRenderer.sendSync('AplicacionNombre')}</figcaption>
         </figure>
         <p>${ipcRenderer.sendSync('AplicacionVersion')}</p>
-        <p><a href="https://github.com/Fhernd/Electron-Curso.git">Repositorio</a></p>
+        <p><a id="aplicacionUrl" href="${ipcRenderer.sendSync('AplicacionUrl')}">Repositorio</a></p>
     `;
+
+    elementos_gui.BOTON_ACERCA_DE.insertAdjacentHTML('beforeend', acercaDe);
+
+    elementos_gui.BOTON_ACERCA_DE.querySelector('#aplicacionUrl').addEventListener('click', function () {
+        shell.openExternal(ipcRenderer.sendSync('AplicacionUrl'))
+    });
 }
