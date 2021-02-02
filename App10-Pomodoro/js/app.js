@@ -169,3 +169,13 @@ function mostrarInformacionAcercaDe() {
         shell.openExternal(ipcRenderer.sendSync('AplicacionUrl'))
     });
 }
+
+ipcRenderer.on('RelojPredeterminado', () => {
+    validarEstado();
+    configurarReloj();
+});
+
+ipcRenderer.on('ResetearEIniciar', () => {
+    temporizador.iniciar();
+    validarEstado();
+});
