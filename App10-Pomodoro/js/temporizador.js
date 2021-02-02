@@ -74,4 +74,4 @@ class Temporizador {
     }
 }
 
-modules.exports = Temporizador;
+module.exports = Temporizador;
