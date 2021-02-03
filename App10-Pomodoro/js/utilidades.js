@@ -12,7 +12,7 @@ module.exports.elementos_gui = {
     AREA_CONFIGURACION: document.querySelector('.configuracion-area'),
     RELOJ_MINUTOS: document.querySelector('.reloj-minutos'),
     RELOJ_SEGUNDOS: document.querySelector('.reloj-segundos'),
-    RANGO_VALOR: document.querySelector('.configuracion-rango-valor'),
+    RANGO_VALOR: document.querySelectorAll('.configuracion-rango-valor'),
     VENTANA_ACERCA_DE: document.querySelector('.acerca-de')
 }
 
