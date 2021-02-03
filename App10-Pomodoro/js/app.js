@@ -143,10 +143,11 @@ elementos_gui.BOTON_GUARDAR.addEventListener('click', guardarDatos);
 window.addEventListener('load', () => {
     if (!STORAGE.getItem(constantes.ALMACENAMIENTO_USUARIO) || !STORAGE.getItem(constantes.ALMACENAMIENTO_PREDETERMINADO)) {
         STORAGE.setItem(constantes.ALMACENAMIENTO_PREDETERMINADO, ipcRenderer.sendSync('ConfiguracionPredeterminada'));
+        STORAGE.setItem(constantes.ALMACENAMIENTO_USUARIO, ipcRenderer.sendSync('ConfiguracionPredeterminada'));
     }
 
     configuracionUsuario = JSON.parse(STORAGE.getItem(constantes.ALMACENAMIENTO_USUARIO));
-    temporizador = Temporizador('focalizado', configuracionUsuario.focalizado);
+    temporizador = new Temporizador('concentracion', configuracionUsuario.focalizado);
 
     configurarReloj();
     mostrarPanelLateral();
