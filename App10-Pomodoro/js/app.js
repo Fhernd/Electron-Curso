@@ -40,7 +40,7 @@ function validarEstado() {
 }
 
 function configurarReloj() {
-    elementos_gui.RELOJ_MINUTOS.firstElementChild.innerHTML = configuracionUsuario.concentrado;
+    elementos_gui.RELOJ_MINUTOS.firstElementChild.innerHTML = configuracionUsuario.concentracion;
     elementos_gui.RELOJ_SEGUNDOS.firstElementChild.innerHTML = '00';
 }
 
@@ -157,7 +157,7 @@ window.addEventListener('load', () => {
 function mostrarInformacionAcercaDe() {
     let acercaDe = `
         <figure class="acerca-de-figura">
-            <img src="/images/pomodoro.png" height="100" width="100" alt="Pomodoro Logo"/>
+            <img src="images/pomodoro.jpg" height="100" width="100" alt="Pomodoro Logo"/>
             <figcaption class="acerca-de-caption">${ipcRenderer.sendSync('AplicacionNombre')}</figcaption>
         </figure>
         <p>${ipcRenderer.sendSync('AplicacionVersion')}</p>
