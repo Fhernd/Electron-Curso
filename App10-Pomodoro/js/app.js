@@ -10,6 +10,8 @@ let temporizador;
 elementos_gui.BOTON_INICIAR.addEventListener('click', () => {
     elementos_gui.BOTON_PAUSAR.classList.add('oculto');
     elementos_gui.BOTON_INICIAR.classList.add('oculto');
+
+    console.log('BOTON_INICIAR click');
     
     temporizador.iniciar();
 });

@@ -24,6 +24,8 @@ class Temporizador {
             if (this.enEjecucion === true) {
                 this.cuentaRegresiva -= 1000;
 
+                console.log('Temporizador.contador.setInterval');
+
                 let minutos = Math.floor(this.cuentaRegresiva / (60 * 1000));
                 let segundos = Math.floor((this.cuentaRegresiva - (minutos * 60 * 1000)) / 1000);
 
@@ -41,6 +43,9 @@ class Temporizador {
                     this.renderizarMinutosSegundos(minutos, segundos)
                     ipcRenderer.send('AlertaBreak', this.modo);
                 } else {
+                    console.log('Temporizador.iniciar.contador.else-bef');
+                    console.log(minutos, segundos);
+                    console.log('Temporizador.iniciar.contador.else-aft');
                     this.renderizarMinutosSegundos(minutos, segundos);
                 }
             }
@@ -48,6 +53,7 @@ class Temporizador {
     }
 
     iniciar() {
+        console.log('Temporizador.iniciar');
         this.enEjecucion = true;
         this.contador();
     }
