@@ -149,7 +149,7 @@ window.addEventListener('load', () => {
     }
 
     configuracionUsuario = JSON.parse(STORAGE.getItem(constantes.ALMACENAMIENTO_USUARIO));
-    temporizador = new Temporizador('concentracion', configuracionUsuario.focalizado);
+    temporizador = new Temporizador('concentracion', configuracionUsuario.concentracion);
 
     configurarReloj();
     mostrarPanelLateral();
