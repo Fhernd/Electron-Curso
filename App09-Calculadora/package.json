@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/Fhernd/Electron-Curso#readme",
   "devDependencies": {
-    "electron": "^10.1.4",
+    "electron": "^15.5.5",
     "electron-builder": "^22.9.1"
   }
 }
