@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/Fhernd/Electron-Curso#readme",
   "dependencies": {
-    "electron": "^8.3.0",
+    "electron": "^15.5.5",
     "papaparse": "^5.2.0"
   }
 }
